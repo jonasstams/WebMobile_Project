@@ -1,0 +1,23 @@
+security:
+    firewalls:
+        secured_area:
+            pattern: ^/
+            anonymous: ~
+            form_login: 
+                login_path:  /login
+                check_path:  /login_check
+            logout:
+                 path: /quit
+                 target: /
+    access_control:
+        - { path: ^/admin/, roles: ROLE_ADMIN }
+        - { path: ^/coach/, roles: [ROLE_ADMIN,ROLE_COACH] }
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+    providers:
+        db_provider:
+            entity:
+                class: AppBundle:User
+                property: username

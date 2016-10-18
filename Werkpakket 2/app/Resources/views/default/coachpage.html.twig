@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}Coach{% endblock %}
+{% block body %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/searchFunction.js') }}"></script>
+    {% endblock %}
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_COACH') %}
+        <h1 class="text-center">Coachpage</h1>
+    {% endif %}
+    <input id="search" type="text" placeholder="Search..." class="center-block"/>
+    </br>
+    <table id="table" class="table tablesorter">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Habit #1</th>
+                <th>Habit #2</th>
+                <th>Habit #3</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.first_name }}</td>
+                <td>{{ customer.last_name }}</td>
+                <td>{{ customer.habit1 }}</td>
+                <td>{{ customer.habit2 }}</td>
+                <td>{{ customer.habit3 }}</td>
+                <td>
+                    <ul>
+                        <li><a>Modify habits</a></li>
+                        <li><a>Reports</a></li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+{% endblock %}

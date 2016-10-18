@@ -1,6 +1,0 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
-customers:
-    type: rest
-    resource: AppBundle\Controller\CustomerController

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<div class="container">
+    <form class="form-signin" action="{{ path('checkroute') }}" method="post">
+        <h1 class="form-signin-heading text-muted">Login</h1>
+        <input type="text" class="form-control" placeholder="Username" required="" autofocus="" id="username" name="_username">
+        <input type="password" class="form-control" placeholder="Password" required="" id="password" name="_password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Login
+        </button>
+    </form>
+</div>
+{% endblock %}
