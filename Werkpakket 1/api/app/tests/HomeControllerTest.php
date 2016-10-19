@@ -25,12 +25,4 @@ class HomeControllerTest extends PHPUnit_Framework_TestCase
         $homeController->openHomePage();
 
     }
-    public function testOpen404Page()
-    {
-        $this->homeViewMock->expects($this->once())
-            ->method('sendStatusCode');
-        $homeController = new HomeController($this->homeViewMock);
-        $homeController->sendHTTPNotFound();
-
-    }
 }
