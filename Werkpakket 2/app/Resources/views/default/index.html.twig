@@ -5,23 +5,39 @@
     <h1>Welcome to Lifestyle</h1>
 {% endblock %}
 
+
 {% block body %}
-{% if is_granted('ROLE_ADMIN') %}
-    (ADMIN):  {{ app.user.username }}
-{% elseif is_granted('ROLE_COACH') %}
-    (COACH): {{ app.user.username }}
-{% else %}
-    (Anonymous)
-{% endif %}
-<div>
-    <a href={{ path("loginroute") }}> Login</a>
-    </div>
-    <p><span><label>H</label>eyy.....</span>What would you like to do?</p>
+    <p><span><label>H</label>eyy.....</span>What kind of user are you?</p>
     <div id="menu-buttons" class="row">
         <div class="col-md-3"></div>
         <div>
-            <a href={{ path("adminroute") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p>Admin</p></div></a>
-            <a href={{ path("coachroute") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span><p>Coach</p></div></a>
+            <a href={{ path("admin_route") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p>Admin</p></div></a>
+            <a href={{ path("coach_route") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span><p>Coach</p></div></a>
         </div>
     </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p><span><label>P</label>lease.....</span>Log in</p>
+                </div>
+                <div class="modal-body">
+
+                        <form action="{{ path('loginroute') }}" method="post">
+
+                    <p><label>Username</label></p>
+                        <input type="text" class="modal-input"  placeholder="Username" required="" autofocus="" id="username" name="_username">
+                        <p><label>Password</label></p>
+                        <input type="password" class="modal-input"  placeholder="Password" required="" id="password" name="_password">
+                        <button class="nice-button" type="submit">
+                            Login
+                        </button>
+                        </form>
+
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
