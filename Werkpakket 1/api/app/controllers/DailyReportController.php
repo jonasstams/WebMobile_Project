@@ -73,7 +73,7 @@ class DailyReportController extends Controller
     {
         $dailyReportUpdate = $this->decodeJson($putData);
         $dailyReportChanged = $this->repository->changeDailyReport($dailyReportId, $dailyReportUpdate);
-        if($dailyReportId)
+        if($dailyReportChanged)
                 $this->view->sendHttpAccepted();
             else
                 $this->view->sendHttpBadRequest();

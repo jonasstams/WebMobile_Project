@@ -44,7 +44,7 @@ class DailyReportControllerTest extends PHPUnit_Framework_TestCase
 
     }
 
-    public function testFindDailyReportById()
+    public function testFindDailyReportById_Ok()
     {
 
         $this->dailyReportRepositoryMock->expects($this->once())
@@ -59,25 +59,22 @@ class DailyReportControllerTest extends PHPUnit_Framework_TestCase
         $dailyReportController->handleFindDailyReportById(self::DR_ID);
     }
 
-    public function testFindDailyReportByIdWithDailyReportEqualsNull()
+    public function testFindDailyReportById_NoContent()
     {
 
         $this->dailyReportRepositoryMock->expects($this->once())
             ->method('findDailyReportById')
             ->will($this->returnValue(null));
 
-        $this->dailyReportRepositoryMock->expects($this->once())
-            ->method('findMetaData');
-
         $this->dailyReportViewMock->expects($this->once())
-            ->method('show');
+            ->method('sendHttpNoContent');
 
         $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock, $this->dailyReportViewMock);
 
         $dailyReportController->handleFindDailyReportById(self::DR_ID);
     }
 
-    public function testFindDailyReportByCustomerIdWithWorkingCustomer()
+    public function testFindDailyReportByCustomerId_Ok()
     {
        
         $this->dailyReportRepositoryMock->expects($this->once())
@@ -92,40 +89,77 @@ class DailyReportControllerTest extends PHPUnit_Framework_TestCase
         $dailyReportController->handleFindDailyReportByCustomerId(self::CUST_ID);
     }
 
-    public function testFindDailyReportByCustomerIdWithCustomerEqualsNull()
+    public function testFindDailyReportByCustomerId_NoContent()
     {
         $this->dailyReportRepositoryMock->expects($this->once())
             ->method('findDailyReportsByCustomerId')
             ->will($this->returnValue(null));
 
-        $this->dailyReportRepositoryMock->expects($this->once())
-            ->method('findMetaData');
-
         $this->dailyReportViewMock->expects($this->once())
-            ->method('show');
+            ->method('sendHttpNoContent');
 
         $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock, $this->dailyReportViewMock);
 
         $dailyReportController->handleFindDailyReportByCustomerId(self::CUST_ID);
     }
 
-    public function testAddDailyReportByCustomerId()
+    public function testAddDailyReportByCustomerId_Created()
     {
         $this->dailyReportRepositoryMock->expects($this->once())
-            ->method('addDailyReport');
+            ->method('addDailyReport')
+            ->will($this->returnValue(true));
 
-        $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock);
+        $this->dailyReportViewMock->expects($this->once())
+            ->method('sendHttpCreated');
+
+
+        $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock, $this->dailyReportViewMock);
 
         $dailyReportController->handleAddDailyReportByCustomerId(self::CUST_ID, $this->exampleJson);
 
     }
 
-    public function testChangeDailyReport()
+    public function testAddDailyReportByCustomerId_NoContent()
     {
         $this->dailyReportRepositoryMock->expects($this->once())
-            ->method('changeDailyReport');
+            ->method('addDailyReport')
+            ->will($this->returnValue(false));
 
-        $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock);
+        $this->dailyReportViewMock->expects($this->once())
+            ->method('sendHttpBadRequest');
+
+
+        $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock, $this->dailyReportViewMock);
+
+        $dailyReportController->handleAddDailyReportByCustomerId(self::CUST_ID, $this->exampleJson);
+
+    }
+
+    public function testChangeDailyReport_Accepted()
+    {
+        $this->dailyReportRepositoryMock->expects($this->once())
+            ->method('changeDailyReport')
+            ->will($this->returnValue(true));
+
+        $this->dailyReportViewMock->expects($this->once())
+            ->method('sendHttpAccepted');
+
+        $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock, $this->dailyReportViewMock);
+
+        $dailyReportController->handleChangeDailyReport(self::CUST_ID, $this->exampleJson);
+
+    }
+
+    public function testChangeDailyReport_BadRequest()
+    {
+        $this->dailyReportRepositoryMock->expects($this->once())
+            ->method('changeDailyReport')
+            ->will($this->returnValue(false));
+
+        $this->dailyReportViewMock->expects($this->once())
+            ->method('sendHttpBadRequest');
+
+        $dailyReportController =  new DailyReportController($this->dailyReportRepositoryMock, $this->dailyReportViewMock);
 
         $dailyReportController->handleChangeDailyReport(self::CUST_ID, $this->exampleJson);
 
