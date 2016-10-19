@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class CoachController extends Controller
 {
     /**
-     * @Route("/coach/", name="coachroute")
+     * @Route("/coach/", name="coach_route")
      */
     public function indexAction()
     {
@@ -18,7 +18,7 @@ class CoachController extends Controller
     }
 
     /**
-     * @Route("/coach/customer", name="coachcustomeroverview")
+     * @Route("/admin/customer", name="admin_customer_overview")
      */
     public function customerAction()
     {
