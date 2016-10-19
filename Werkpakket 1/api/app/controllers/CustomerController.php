@@ -44,7 +44,7 @@ class CustomerController extends Controller
         if($customer != null)
             $this->view->show(['data' => $customer->toArray()]);
         else
-            $this->view->show(['data' => $this->repository->findMetaData("No customer found with id ". $id ."!")]);
+            $this->view->sendHttpNoContent();
     }
     
     public function handleFindAllCustomers()
@@ -53,7 +53,7 @@ class CustomerController extends Controller
         if($customers != null)
             $this->view->show(['data' => $customers]);
         else
-            $this->view->show(['data' => $this->repository->findMetaData("No customers found!")]);
+            $this->view->sendHttpNoContent();
     }
 
     public function handleCheckCustomerExists($id)
@@ -64,13 +64,23 @@ class CustomerController extends Controller
     public function handleAddCustomer($postData)
     {
         $customer = $this->decodeJson($postData);
-        $this->repository->addCustomer($customer);
+        $customerAdded = $this->repository->addCustomer($customer);
+        if($customerAdded){
+            $this->view->sendHttpCreated();
+        }else{
+            $this->view->sendHttpBadRequest();
+        }
     }
 
     public function handleChangeCustomer($customerId,$putData)
     {
         $customerUpdateData = $this->decodeJson($putData);
-        $this->repository->changeCustomer($customerId, $customerUpdateData);
+        $customerChanged = $this->repository->changeCustomer($customerId, $customerUpdateData);
+        if($customerChanged){
+            $this->view->sendHttpAccepted();
+        }else{
+            $this->view->sendHttpBadRequest();
+        }
     }
 
     public function handleFindHabitsFromCustomerByCustId($id)
@@ -79,6 +89,6 @@ class CustomerController extends Controller
         if($habits != null)
             $this->view->show(['data' => $habits]);
         else
-            $this->view->show(['data' => $this->repository->findMetaData("No customer found with id " . $id . "!")]);
+            $this->view->sendHttpNoContent();
     }
 }

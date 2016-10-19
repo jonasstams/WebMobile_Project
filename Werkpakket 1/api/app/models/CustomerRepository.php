@@ -123,8 +123,10 @@ class CustomerRepository implements ICustomerRepository
                 'habit3' => $newCustomer->getHabit3(),
                 'user_id' => $newCustomer->getUserId()
             ));
+            return true;
         } catch (PDOException $e) {
             $this->log->addError($e->getMessage());
+            return false;
         }
     }
 
@@ -177,6 +179,7 @@ class CustomerRepository implements ICustomerRepository
         }catch (PDOException $e)
         {
             $this->log->addError($e->getMessage());
+            return false;
         }
     }
 

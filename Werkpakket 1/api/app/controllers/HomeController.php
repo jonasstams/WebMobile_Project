@@ -23,8 +23,9 @@ class HomeController extends Controller
         $this->view->showHomePage();
     }
 
-    public function open404Page()
-    {
-        $this->view->show404Page();
-    }
+  
+
+
+
+
 }

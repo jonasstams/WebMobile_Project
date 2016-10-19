@@ -100,8 +100,10 @@ class DailyReportRepository implements IDailyReportRepository
                 "extra_information" => $objDailyReport->getExtraInformation()
             ));
             $this->log->addWarning('Daily report created.');
+            return true;
         } catch (PDOException $e) {
             $this->log->addError($e->getMessage());
+            return false;
         }
     }
 
@@ -143,7 +145,8 @@ class DailyReportRepository implements IDailyReportRepository
                     "extra_information" => $dailyReport->getExtraInformation(),
                     "id" => $dailyReportId
                 ));
-                $this->log->addWarning('Daily report with id ' . $dailyReportId) ;
+                $this->log->addWarning('Daily report with id ' . $dailyReportId . ' changed.') ;
+                return true;
             }
             
         }catch (PDOException $e)
