@@ -44,7 +44,7 @@ class DailyReportController extends Controller
         if($dailyReport != null)
             $this->view->show(['data' => $dailyReport->toArray()]);
         else
-            $this->view->show(['data' => $this->repository->findMetaData("No daily report found with id ". $dailyReportId ."!")]);
+            $this->view->sendHttpNoContent();
     }
     
     public function handleFindDailyReportByCustomerId($customerId)
@@ -53,20 +53,30 @@ class DailyReportController extends Controller
             if($dailyReports != null)
                 $this->view->show(['data' => $dailyReports]);
             else
-                $this->view->show(['data' => $this->repository->findMetaData("No daily reports found for customer with id ". $customerId ."!")]);
+                $this->view->sendHttpNoContent();
     }
 
 
     public function handleAddDailyReportByCustomerId($customerId, $postData)
     {
         $dailyReport = $this->decodeJson($postData);
-        $this->repository->addDailyReport($customerId, $dailyReport);
+        $dailyReportCreated = $this->repository->addDailyReport($customerId, $dailyReport);
+        if($dailyReportCreated)
+            $this->view->sendHttpCreated();
+        else
+            $this->view->sendHttpBadRequest();
+
+
     }
 
     public function handleChangeDailyReport($dailyReportId, $putData)
     {
         $dailyReportUpdate = $this->decodeJson($putData);
-        $this->repository->changeDailyReport($dailyReportId, $dailyReportUpdate);
+        $dailyReportChanged = $this->repository->changeDailyReport($dailyReportId, $dailyReportUpdate);
+        if($dailyReportId)
+                $this->view->sendHttpAccepted();
+            else
+                $this->view->sendHttpBadRequest();
     }
 
 }

@@ -12,6 +12,7 @@ $dailyReportPDORepository = new DailyReportRepository($pdo);
 $dailyReportView = new DailyReportView();
 $dailyReportController = new DailyReportController($dailyReportPDORepository, $dailyReportView);
 $homeController = new HomeController();
+$view = new View();
 $router = new AltoRouter();
 $router->setBasePath('/api/public');
 
@@ -69,5 +70,5 @@ if ($match) {
 }
 else
 {
-   $homeController->open404Page();
+   $view->sendHttpNotFound();
 }
