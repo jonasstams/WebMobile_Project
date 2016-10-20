@@ -26,7 +26,7 @@ img{max-width:100%;}
 body{
 	background: url(../img/bg1.png);
 	font-family: "Century Gothic",Arial, Helvetica, sans-serif;
-	}
+}
 .content p{
 	margin: 18px 0px 45px 0px;
 }
@@ -82,7 +82,7 @@ body{
 	background: -o-linear-gradient(top,  #666666 0%,#666666 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  #666666 0%,#666666 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #666666 0%,#666666 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#666666',GradientType=0 ); /* IE6-9 */	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#666666',GradientType=0 ); /* IE6-9 */
 	padding: 10px 10px 18px 10px;
 }
 .logo h1 a{
@@ -133,29 +133,19 @@ body{
 	height: 140px;
 	margin-bottom: 20px;
 	font-size: 50px;
-	cursor: pointer;
 }
 
 .half-button p{
 	padding-top: 0px;
 }
 
-#loginModal .error{
-	font-size: 20px;
-	color: red;
-}
-
-#loginModal .error span{
-	font-size: 15px;
-	color: red;
-}
 .nice-button.half-button.logout{
 	background-color: #fa716b;
 	margin-left: 7px;
 }
 .nice-button.half-button.user{
-	 background-color: #9599FB;
- }
+	background-color: #9599FB;
+}
 .nice-button.half-button.user:hover{
 	opacity: 0.4;
 }
@@ -172,6 +162,16 @@ body{
 	font-size: 35px;
 }
 
+#loginModal .error{
+	font-size: 20px;
+	color: red;
+}
+
+#loginModal .error span{
+	font-size: 15px;
+	color: red;
+}
+
 .right{
 	float:right;
 }
@@ -182,12 +182,12 @@ body{
 	border-bottom: 1px solid #e5e5e5;
 }
 .modal-input{
-	 border: none;
-	 width: 50%;
-	 height: 40px;
-	 background-color: rgba(112, 233, 154, 0.3);
-	 text-align: center;
- }
+	border: none;
+	width: 50%;
+	height: 40px;
+	background-color: rgba(112, 233, 154, 0.3);
+	text-align: center;
+}
 #logoutModal .modal-body{
 	height: 150px;
 	padding: 0px;
@@ -209,8 +209,8 @@ body{
 
 @media (min-width: 768px){
 	.modal-dialog {
-	margin: 350px auto;
-}
+		margin: 350px auto;
+	}
 	#loginModal .modal-dialog{
 		margin: 200px auto;
 	}
@@ -257,7 +257,7 @@ body{
 	}
 	.copy-right p{
 		font-size:0.9em;
-		
+
 	}
 }
 @media screen and (max-width:640px)	{

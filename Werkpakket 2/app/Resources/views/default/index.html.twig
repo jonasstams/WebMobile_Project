@@ -5,16 +5,15 @@
     <h1>Welcome to Lifestyle</h1>
 {% endblock %}
 
-
 {% block body %}
+<div>
+    </div>
     <p><span><label>H</label>eyy.....</span>What kind of user are you?</p>
     <div id="menu-buttons" class="row">
         <div class="col-md-3"></div>
         <div>
-            <a href={{ path("admin_route") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p>Admin</p></div></a>
-            <a href={{ path("coach_route") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span><p>Coach</p></div></a>
+            <a href={{ path("adminroute") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p>Admin</p></div></a>
+            <a href={{ path("coachroute") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span><p>Coach</p></div></a>
         </div>
     </div>
-
-
 {% endblock %}
