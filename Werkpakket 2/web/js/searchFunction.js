@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    $("table").tablesorter();
-
     var $rows = $('tbody tr');
 
     $('#search').keyup(function() {
@@ -11,4 +9,8 @@ $(document).ready(function() {
             return !~text.indexOf(val);
         }).hide();
     });
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
 });
