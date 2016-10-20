@@ -1,0 +1,51 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Coach{% endblock %}
+
+{% block headertitle %}<h1>Coach page - Report Overview for {{ customer.first_name }} {{ customer.last_name }}</h1>{% endblock %}
+
+{% block body %}
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="container">
+        <br>
+        <div id="reportCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <!-- Indicators -->
+            <!--<ol class="carousel-indicators">
+                <li data-target="#reportCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#reportCarousel" data-slide-to="1"></li>
+                <li data-target="#reportCarousel" data-slide-to="2"></li>
+                <li data-target="#reportCarousel" data-slide-to="3"></li>
+            </ol>-->
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    {% for report in reports %}
+                        <ul>
+                            <li>Habit1: {{ report.habit1_done }}</li>
+                            <li>Habit2: {{ report.habit2_done }}</li>
+                            <li>Habit3: {{ report.habit3_done }}</li>
+                            <li>Weight: {{ report.weight }}</li>
+                            <li>Calories: {{ report.calories }}</li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#reportCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#reportCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}

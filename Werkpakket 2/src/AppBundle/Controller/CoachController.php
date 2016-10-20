@@ -27,4 +27,14 @@ class CoachController extends Controller
        
     }
 
+    /**
+     * @Route("/coach/customer/reports/{id}", name="coach_customer_report_overview")
+     */
+    public function customerReportOverviewAction($id)
+    {
+        $reports = $this->get('api')->reportsByCustomerID($id);
+        $customer = $this->get('api')->customerByID($id);
+        return $this->render('AppBundle:Coach:customer.report.overview.html.twig', ["reports" => $reports, "customer" => $customer, "id" => $id]);
+
+    }
 }

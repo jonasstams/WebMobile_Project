@@ -17,7 +17,12 @@ class APICaller
 
     public function customerByID($id)
     {
-        $data = $this->apiCall('www.jonasstams.be/api/public/customer/' . $id);
+        $data = $this->apiCall('www.jonasstams.be/api/public/customers/' . $id);
+        return $data;
+    }
+
+    public function reportsByCustomerID($id) {
+        $data = $this->apiCall('www.jonasstams.be/api/public/reports/' . $id);
         return $data;
     }
 
