@@ -14,12 +14,12 @@
                 <a href="#"><div class=" nice-button half-button user"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span><p>{{ app.user.username|capitalize }} </p></div></a>
                 <a data-toggle="modal" data-target="#logoutModal"><div class="col-md-5 nice-button half-button logout"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Log out</p></div></a>
 
-                <a data-toggle="modal" data-target="#logoutModal"><div class="col-md-6 nice-button half-button settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><p>Settings</p></div></a>
+                <a href="{{ path('admin_settings') }}"><div class="col-md-6 nice-button half-button settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><p>Settings</p></div></a>
 
             </div>
             <div>
             <a href="#"><div class="col-md-2 nice-button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><p>Manage Coaches</p></div></a>
-            <a href="#"><div class="col-md-2 nice-button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><p>Manage Customers</p></div></a>
+            <a href="{{ path('admin_customer_overview') }}"><div class="col-md-2 nice-button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><p>Manage Customers</p></div></a>
             </div>
          </div>
 

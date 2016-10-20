@@ -18,12 +18,21 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/coach/customer", name="coach_customer_overview")
+     * @Route("/admin/customer", name="admin_customer_overview")
      */
     public function customerAction()
     {
         $customers = $this->get('api')->customerOverview();
-        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers)]);
+        return $this->render('AppBundle:Admin:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers)]);
+
+    }
+
+    /**
+     * @Route("/admin/settings", name="admin_settings")
+     */
+    public function settingsAction()
+    {
+        return $this->render('AppBundle:Admin:settings.html.twig');
 
     }
 
