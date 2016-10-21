@@ -12,7 +12,18 @@ class SecurityController extends Controller {
      * @Route("/login", name="loginroute")
      */
     public function loginAction(Request $request) {
-        return $this->render('default/login.html.twig');
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('default/login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ));
     }
 
     /**
