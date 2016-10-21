@@ -49,7 +49,7 @@ class CustomerController extends Controller
     
     public function handleFindAllCustomers()
     {
-        $customers = $this->repository->findAllAsArray();
+        $customers = $this->repository->findAll();
         if($customers != null)
             $this->view->show(['data' => $customers]);
         else

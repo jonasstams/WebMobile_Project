@@ -9,15 +9,15 @@ class CustomerRepository implements ICustomerRepository
     private $connection = null;
     private $log;
 
-    public function __construct(\PDO $connection = null)
+    public function __construct(PDO $connection = null)
     {
         try {
             $this->connection = $connection;
-            $this->log = new Logger('PDOCustomer_Logger');
-            $this->log->pushHandler(new StreamHandler('../logs/PDOCustomer_Logfile.log', Logger::WARNING));
+          //  $this->log = new Logger('PDOCustomer_Logger');
+//            $this->log->pushHandler(new StreamHandler('../logs/PDOCustomer_Logfile.log', Logger::WARNING));
         } catch (PDOException $e) {
-            $this->log->addWarning('Unable to connect with the database.');
-            $this->log->addError($e->getMessage());
+//            $this->log->addWarning('Unable to connect with the database.');
+//            $this->log->addError($e->getMessage());
         }
 
     }
@@ -25,7 +25,7 @@ class CustomerRepository implements ICustomerRepository
     public function findAll()
     {
         try {
-            $this->log->addWarning('findAll executed.');
+//            $this->log->addWarning('findAll executed.');
             $stmt = $this->connection->prepare('SELECT * FROM customers');
             $stmt->execute();
             $customers = [];
@@ -36,11 +36,11 @@ class CustomerRepository implements ICustomerRepository
             if (count($customers) > 0) {
                 return $customers;
             } else {
-                $this->log->addError("There are no customers in the database.");
+//                $this->log->addError("There are no customers in the database.");
                 return null;
             }
         } catch (PDOException $e) {
-            $this->log->addError($e->getMessage());
+//            $this->log->addError($e->getMessage());
         }
 
     }
@@ -48,10 +48,15 @@ class CustomerRepository implements ICustomerRepository
     public function findAllAsArray()
     {
         try {
-            $this->log->addWarning('findAll executed.');
+//            $this->log->addWarning('findAll executed.');
             $stmt = $this->connection->prepare('SELECT * FROM customers');
             $stmt->execute();
-            $customers = [];
+            $customers = $stmt->fetchAll();
+            if(count($customers) > 0)
+                return $customers;
+            else
+                return false;
+            /*
             while($customer = $stmt->fetchObject('Customer'))
             {
                 $customers[] = $customer->toArray();
@@ -59,11 +64,12 @@ class CustomerRepository implements ICustomerRepository
             if (count($customers) > 0) {
                 return $customers;
             } else {
-                $this->log->addError("There are no customers in the database.");
+//                $this->log->addError("There are no customers in the database.");
                 return null;
             }
+            */
         } catch (PDOException $e) {
-            $this->log->addError($e->getMessage());
+//            $this->log->addError($e->getMessage());
         }
 
     }

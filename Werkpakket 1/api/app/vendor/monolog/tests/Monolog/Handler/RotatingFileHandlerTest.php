@@ -29,7 +29,7 @@ class RotatingFileHandlerTest extends TestCase
 
     public function setUp()
     {
-        $dir = __DIR__.'/Fixtures';
+        $dir = __DIR__ . '/Fixtures';
         chmod($dir, 0777);
         if (!is_writable($dir)) {
             $this->markTestSkipped($dir.' must be writable to test the RotatingFileHandler.');

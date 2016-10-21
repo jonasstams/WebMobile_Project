@@ -20,6 +20,10 @@ class ComposerStaticInit8887c5829e987c2a9570a47c512fee77
         array (
             'Webmozart\\Assert\\' => 17,
         ),
+        'V' => 
+        array (
+            'Vendor\\Namespace\\' => 17,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -56,6 +60,10 @@ class ComposerStaticInit8887c5829e987c2a9570a47c512fee77
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'Vendor\\Namespace\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -74,7 +82,8 @@ class ComposerStaticInit8887c5829e987c2a9570a47c512fee77
         ),
         'Monolog\\' => 
         array (
-            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+            0 => __DIR__ . '/../..' . '/src',
+            1 => __DIR__ . '/..',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -91,11 +100,30 @@ class ComposerStaticInit8887c5829e987c2a9570a47c512fee77
     );
 
     public static $prefixesPsr0 = array (
+        'V' => 
+        array (
+            'Vendor\\Namespace' => 
+            array (
+                0 => __DIR__ . '/../..' . '/src',
+                1 => __DIR__ . '/../..' . '/lib',
+            ),
+        ),
         'P' => 
         array (
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+            'Pear_Style' => 
+            array (
+                0 => __DIR__ . '/../..' . '/src',
+            ),
+        ),
+        'M' => 
+        array (
+            'Monolog' => 
+            array (
+                0 => __DIR__ . '/../..' . '/src',
             ),
         ),
         'I' => 
@@ -117,6 +145,10 @@ class ComposerStaticInit8887c5829e987c2a9570a47c512fee77
                 0 => __DIR__ . '/..' . '/illuminate/container',
             ),
         ),
+    );
+
+    public static $fallbackDirsPsr0 = array (
+        0 => __DIR__ . '/../..' . '/src',
     );
 
     public static $classMap = array (
@@ -582,6 +614,7 @@ class ComposerStaticInit8887c5829e987c2a9570a47c512fee77
             $loader->prefixLengthsPsr4 = ComposerStaticInit8887c5829e987c2a9570a47c512fee77::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit8887c5829e987c2a9570a47c512fee77::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit8887c5829e987c2a9570a47c512fee77::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInit8887c5829e987c2a9570a47c512fee77::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInit8887c5829e987c2a9570a47c512fee77::$classMap;
 
         }, null, ClassLoader::class);

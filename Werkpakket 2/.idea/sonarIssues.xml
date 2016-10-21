@@ -63,12 +63,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/index.html.twig">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/settings.html.twig">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/coach-settings.html.twig">
           <value>
             <set />
           </value>

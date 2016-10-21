@@ -18,6 +18,15 @@ class CoachController extends Controller
     }
 
     /**
+     *@Route("/coach/settings", name="coach_settings")
+     */
+    public function coachSettingsAction()
+    {
+        return $this->render('AppBundle:Coach:coach-settings.html.twig');
+
+    }
+
+    /**
      * @Route("/coach/customer", name="coachcustomeroverview")
      */
     public function customerAction()
@@ -26,5 +35,6 @@ class CoachController extends Controller
         return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers)]);
        
     }
+
 
 }

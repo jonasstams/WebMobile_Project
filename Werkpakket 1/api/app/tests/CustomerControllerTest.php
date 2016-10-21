@@ -9,6 +9,7 @@ require_once __DIR__.'/../models/Customer.php';
 require_once __DIR__.'/../controllers/CustomerController.php';
 
 
+
 class CustomerControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $customer;
