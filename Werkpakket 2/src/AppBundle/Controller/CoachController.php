@@ -21,10 +21,10 @@ class CoachController extends Controller
     /**
      * @Route("/coach/customer", name="coach_customer_overview")
      */
-    public function customerAction()
+    public function customerAction($response = null)
     {
         $customers = $this->get('api')->customerOverview();
-        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers)]);
+        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers), "response" => $response]);
     }
 
     /**
@@ -51,9 +51,15 @@ class CoachController extends Controller
     /**
      * @Route("/coach/customer", name="update_habits")
      */
-    public function updateHabitsAction()
+    public function updateHabitsAction(Request $request)
     {
-        return null;
+        $id = $request->get('id');
+        $habit1 = $request->get('habit1');
+        $habit2 = $request->get('habit2');
+        $habit3 = $request->get('habit3');
+        $response = $this->get('api')->updateHabitsForCustomerByID($id, $habit1, $habit2, $habit3);
+        $customers = $this->get('api')->customerOverview();
+        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers), "response" => $response]);
     }
 }
 

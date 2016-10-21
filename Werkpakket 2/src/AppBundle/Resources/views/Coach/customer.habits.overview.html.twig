@@ -16,13 +16,14 @@
     {% endblock %}
 <div class="container">
     <form action="{{ path('update_habits') }}" method="post">
+        <input type="hidden" name="id" value="{{ customer.id }}"/>
         <p>Habit 1</p>
         <input class="form-control" type="text" name="habit1" value="{{ customer.habit1 }}"/>
         <p>Habit 2</p>
         <input class="form-control" type="text" name="habit2" value="{{ customer.habit2 }}"/>
         <p>Habit 3</p>
         <input class="form-control" type="text" name="habit3" value="{{ customer.habit3 }}"/>
-        <input id="habitsSubmitButton" type="submit" class="btn btn-default btn-lg" value="Bewerk"/>
+        <input id="habitsSubmitButton" type="submit" class="btn btn-default btn-lg" value="Edit"/>
     </form>
 </div>
 {% endblock %}
