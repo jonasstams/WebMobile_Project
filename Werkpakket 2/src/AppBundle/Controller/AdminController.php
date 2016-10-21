@@ -4,10 +4,11 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin/" , name="adminroute")
+     * @Route("/admin/" , name="admin_route")
      */
     public function indexAction()
     {
@@ -17,11 +18,12 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/settings", name="admin_settings")
+     * @Route("/admin/customer", name="admin_customer_overview")
      */
-    public function settingsAction()
+    public function customerAction()
     {
-        return $this->render('AppBundle:Admin:admin-settings.html.twig');
+        $customers = $this->get('api')->customerOverview();
+        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers)]);
 
     }
 

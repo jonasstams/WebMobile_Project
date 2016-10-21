@@ -3,16 +3,6 @@
   <component name="issues">
     <option name="index">
       <map>
-        <entry key="$PROJECT_DIR$/../WebMobile_Project/Werkpakket 2/app/Resources/views/default/login.html.twig">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../WebMobile_Project/Werkpakket 2/web/css/style.css">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <value>
             <set />
@@ -24,11 +14,6 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/Resources/views/default/login.html.twig">
           <value>
             <set />
           </value>
@@ -58,27 +43,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/index.html.twig">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/settings.html.twig">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Coach/coach-settings.html.twig">
           <value>
             <set />
           </value>

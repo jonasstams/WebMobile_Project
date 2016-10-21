@@ -2,42 +2,37 @@
 {% block title %}Login{% endblock %}
  {% block javascripts %}
      <script type="text/javascript">
-         $(document).ready(function () {
-             $('#loginModal').modal({backdrop: 'static', keyboard: false}).modal('show');
+        $(document).ready(function () {
+            $('#loginModal').modal({backdrop: 'static', keyboard: false}).modal('show');
          });
      </script>
  {% endblock %}
 {% block body %}
-    <div class="modal fade show" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p><span><label>P</label>lease.....</span>Log in</p>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ path('checkroute') }}" method="post">
+        <div class="modal fade show" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p>Log in</p>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('checkroute') }}" method="post">
 
                         <p><label>Username</label></p>
-                        <input type="text" class="modal-input"  placeholder="Username"  value="{{ last_username }}" required="" autofocus="" id="username" name="_username">
+                        <input type="text" class="modal-input"  placeholder="Username" required="" autofocus="" id="username" name="_username">
                         <p><label>Password</label></p>
                         <input type="password" class="modal-input"  placeholder="Password" required="" id="password" name="_password">
-
-                        {% if error %}
-                            <p class="error"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
-                        {% endif %}
                         <div class="row">
                             <a href={{ path("homepage") }}> <div class="col-md-2 nice-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></div></a>
-
                             <div class="col-md-1"></div>
                             <button class="col-md-6 nice-button right" type="submit">
                                 Login
                             </button>
 
                         </div></form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}
 {% block footer %}
 {% endblock %}
