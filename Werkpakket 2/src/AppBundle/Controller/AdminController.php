@@ -18,7 +18,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/coach/customer", name="coach_customer_overview")
+     * @Route("/admin/customer", name="admin_customer_overview")
      */
     public function customerAction()
     {
