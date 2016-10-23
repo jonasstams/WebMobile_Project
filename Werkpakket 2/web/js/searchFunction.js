@@ -1,6 +1,5 @@
+var $rows = $('tbody tr');
 $(document).ready(function() {
-    var $rows = $('tbody tr');
-
     $('#search').keyup(function() {
         var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
@@ -14,3 +13,7 @@ $(document).ready(function() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+$(document).ready(function() {
+    $('#table').DataTable();
+} );

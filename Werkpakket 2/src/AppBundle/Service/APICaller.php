@@ -27,20 +27,15 @@ class APICaller
     }
 
     public function updateHabitsForCustomerByID($id, $habit1, $habit2, $habit3) {
-        $ch = curl_init();
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
         $params = array(
+            "id"    => $id,
             "habit1"=> $habit1,
             "habit2"=> $habit2,
             "habit3"=> $habit3,
         );
-        $data = json_encode($params);
-        $this->debug_to_console($data);
-        curl_setopt($ch,CURLOPT_URL,"www.jonasstams.be/api/public/customers/" . $id);
-        curl_setopt($ch,CURLOPT_PUT,true);
-        curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($data));
-        $result = curl_exec($ch);
-        return $result;
+
+        $data = $this->apiPUTCall("www.jonasstams.be/api/public/customers/" . $id, $params);
+        return $data;
     }
 
     public function apiCall($url) {
@@ -53,12 +48,14 @@ class APICaller
         return $data;
     }
 
-    function debug_to_console( $data ) {
-        if ( is_array( $data ) )
-            $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-        else
-            $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-
-        echo $output;
+    public function apiPUTCall($url, $params) {
+        $ch = curl_init();
+        $data = json_encode($params);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PUT, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        return $result;
     }
 }

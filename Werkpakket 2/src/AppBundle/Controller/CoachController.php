@@ -33,10 +33,15 @@ class CoachController extends Controller
     public function customerReportOverviewAction($id)
     {
         $reports = $this->get('api')->reportsByCustomerID($id);
+        $numberOfReports = count($reports);
         $firstReport = $reports[0]; //Enkel eerste om als active div te zetten
         array_shift($reports); //Alle reports buiten de eerste
         $customer = $this->get('api')->customerByID($id);
-        return $this->render('AppBundle:Coach:customer.report.overview.html.twig', ["reports" => $reports, "firstReport" => $firstReport, "customer" => $customer, "id" => $id]);
+        return $this->render('AppBundle:Coach:customer.report.overview.html.twig', ["reports" => $reports,
+                                                                                    "firstReport" => $firstReport,
+                                                                                    "customer" => $customer,
+                                                                                    "id" => $id
+                                                                                    ]);
     }
 
     /**

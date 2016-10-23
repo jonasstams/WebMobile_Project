@@ -7,12 +7,14 @@
 {% block body %}
     {% block javascripts %}
         {{ parent() }}
-        <script src="{{ asset('js/jquery.mobile.custom.min.js') }}"></script>
         <script src="{{ asset('js/coach.js') }}"></script>
+        <script src="{{ asset('js/jquery.excoloSlider.min.js') }}"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {% endblock %}
     {% block stylesheets %}
         {{ parent() }}
         <link rel="stylesheet" type="text/css" href="{{ asset('css/coach.css') }}">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     {% endblock %}
     <div class="container">
         <div id="reportCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
