@@ -100,33 +100,6 @@ ul {
     background-color: #70e99a;
 }
 
-/* COACH INDEX */
-
-#menu {
-    width: 60%;
-    margin: 0 auto;
-}
-
-#menuLeftBlock {
-    float: left;
-    width: 40%;
-}
-
-#menuRightBlock {
-    float: right;
-    width: 60%;
-}
-
-#menu-settingsLeftBlock {
-    float: left;
-    width: 50%;
-}
-
-#menu-settingsRightBlock {
-    float: right;
-    width: 50%;
-}
-
 .customerOverview {
     background: #70e99a;
 }

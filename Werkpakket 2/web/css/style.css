@@ -112,6 +112,7 @@ body{
 	padding-top: 20px;
 	margin-left:5px;
 	margin-right:5px;
+	margin-bottom: 20px;
 	color: #FFFFFF;
 	font-size: 100px;
 	animation: fadein 2.5s;
@@ -287,6 +288,37 @@ body{
 		margin: 18px 0px 22px 0px;
 	}
 }
+
+/* Responsive design voor index */
+@media screen and (min-width: 1024px)	{
+	#menu {
+		width: 60%;
+		margin: 0 auto;
+	}
+
+	#menuLeftBlock {
+		float: left;
+		width: 40%;
+	}
+
+	#menuRightBlock {
+		float: right;
+		width: 60%;
+	}
+
+	#menu-settingsLeftBlock {
+		float: left;
+		width: 50%;
+	}
+
+	#menu-settingsRightBlock {
+		float: right;
+		width: 50%;
+	}
+}
+
+
+/* Effectjes (weggelaten voor de gemakkelijkheid */
 /*
 @keyframes fadein {
 	from {
@@ -398,40 +430,3 @@ body{
 		transform: translateX(0);
 	}
 }*/
-
-/* Responsive design voor index */
-#menu {
-	width: 60%;
-	margin: 0 auto;
-}
-
-#menuLeftBlock {
-	float: left;
-	width: 40%;
-}
-
-#menuRightBlock {
-	float: right;
-	width: 60%;
-}
-
-#menu-settingsLeftBlock {
-	float: left;
-	width: 50%;
-}
-
-#menu-settingsRightBlock {
-	float: right;
-	width: 50%;
-}
-
-.customerOverview {
-	background: #70e99a;
-}
-
-
-
-
-
-
-
