@@ -5,20 +5,27 @@
 {% block headertitle %}
     <h1>Welcome to Coach page</h1>
 {% endblock %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/coach.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/copyright.css') }}">
+{% endblock %}
 {% block body %}
-    <p><span><label>H</label>eyy.....</span>What would you like to do?</p>
-    <div id="menu-buttons" class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-2 colored-buttons" >
-            <a href="#"><div class=" nice-button half-button user"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span><p>{{ app.user.username|capitalize }} </p></div></a>
-            <a data-toggle="modal" data-target="#logoutModal"><div class="col-md-5 nice-button half-button logout"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Log out</p></div></a>
-
-            <a data-toggle="modal" data-target="#logoutModal"><div class="col-md-6 nice-button half-button settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><p>Settings</p></div></a>
-
+    <p>What would you like to do?</p>
+    <div id="menu">
+        <div id="menuLeftBlock">
+            <div class="nice-button half-button user"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span><p>{{ app.user.username }} </p></div>
+            <div id="menu-settings">
+                <div id="menu-settingsLeftBlock">
+                    <a data-toggle="modal" data-target="#logoutModal"><div class="nice-button half-button logout"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Log out</p></div></a>
+                </div>
+                <div id="menu-settingsRightBlock">
+                    <a data-toggle="modal" data-target=""><div class="nice-button half-button settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><p>Settings</p></div></a>
+                </div>
+            </div>
         </div>
-        <div>
-            <a href={{ path("coach_customer_overview") }}> <div class="col-md-3 nice-button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><p>Customer overview</p></div></a>
+        <div id="menuRightBlock">
+            <a href={{ path("coach_customer_overview") }}> <div class="nice-button customerOverview"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><p>Customer overview</p></div></a>
         </div>
     </div>
 
@@ -26,7 +33,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <p><span><label>O</label>hhh.....</span>You really want to log out?</p>
+                    <p>Do you really want to log out?</p>
                     <a data-dismiss="modal"><div class="col-md-5 nice-button"><p>No</p></div></a>
                     <a href={{ path("logout") }}><div class="col-md-5 nice-button"><p>Yes</p></div></a>
                 </div>

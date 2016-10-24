@@ -42,7 +42,7 @@ body{
 
 }
 .content p span,.logo h1 a, h1{
-	color:#70e99a;
+	color: #70e99a;
 }
 
 .content{
@@ -92,7 +92,7 @@ body{
 	padding-top:20px;
 }
 .copy-right p{
-	font-size:0.9em;
+	font-size: 0.9em;
 }
 .copy-right p a{
 	background:none;
@@ -141,14 +141,13 @@ body{
 
 .nice-button.half-button.logout{
 	background-color: #fa716b;
-	margin-left: 7px;
+    cursor: pointer;
 }
 .nice-button.half-button.user{
 	background-color: #9599FB;
+	opacity: 1;
 }
-.nice-button.half-button.user:hover{
-	opacity: 0.4;
-}
+
 #loginModal .modal-content p{
 	margin-bottom: 10px;
 }
@@ -216,7 +215,6 @@ body{
 	}
 }
 
-
 #route-table{
 	border: 1px solid black;
 	margin: auto;
@@ -236,7 +234,6 @@ body{
 	border: 1px solid black;
 }
 
-
 /*------responive-design--------*/
 @media screen and (max-width: 1366px)	{
 	.content {
@@ -252,9 +249,7 @@ body{
 	.content {
 		padding: 58px 0px 0px 0px;
 	}
-	.content p {
-		font-size: 1.5em;
-	}
+
 	.copy-right p{
 		font-size:0.9em;
 
@@ -264,9 +259,7 @@ body{
 	.content {
 		padding: 58px 0px 0px 0px;
 	}
-	.content p {
-		font-size: 1.3em;
-	}
+
 	.copy-right p{
 		font-size:0.9em;
 	}
@@ -276,9 +269,7 @@ body{
 		padding:20px 0px 0px 0px;
 		margin:0px 12px;
 	}
-	.content p {
-		font-size:0.9em;
-	}
+
 	.copy-right p{
 		font-size:0.8em;
 	}
@@ -296,6 +287,7 @@ body{
 		margin: 18px 0px 22px 0px;
 	}
 }
+/*
 @keyframes fadein {
 	from {
 		opacity:0;
@@ -304,7 +296,7 @@ body{
 		opacity:0.4;
 	}
 }
-@-moz-keyframes fadein { /* Firefox */
+@-moz-keyframes fadein {
 	from {
 		opacity:0;
 	}
@@ -312,7 +304,7 @@ body{
 		opacity:0.4;
 	}
 }
-@-webkit-keyframes fadein { /* Safari and Chrome */
+@-webkit-keyframes fadein {
 	from {
 		opacity:0;
 	}
@@ -320,7 +312,7 @@ body{
 		opacity:0.4;
 	}
 }
-@-o-keyframes fadein { /* Opera */
+@-o-keyframes fadein {
 	from {
 		opacity:0;
 	}
@@ -328,6 +320,7 @@ body{
 		opacity: 0.4;
 	}
 }
+
 @-webkit-keyframes swing
 {
 	15%
@@ -404,4 +397,41 @@ body{
 		-webkit-transform: translateX(0);
 		transform: translateX(0);
 	}
+}*/
+
+/* Responsive design voor index */
+#menu {
+	width: 60%;
+	margin: 0 auto;
 }
+
+#menuLeftBlock {
+	float: left;
+	width: 40%;
+}
+
+#menuRightBlock {
+	float: right;
+	width: 60%;
+}
+
+#menu-settingsLeftBlock {
+	float: left;
+	width: 50%;
+}
+
+#menu-settingsRightBlock {
+	float: right;
+	width: 50%;
+}
+
+.customerOverview {
+	background: #70e99a;
+}
+
+
+
+
+
+
+
