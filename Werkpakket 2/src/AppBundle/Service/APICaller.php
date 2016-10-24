@@ -32,9 +32,9 @@ class APICaller
             "habit2"=> $habit2,
             "habit3"=> $habit3,
         );
-        $testvar = "Hij geraakt tot in de APICaller.";
+
         $data = $this->apiPUTCall('www.jonasstams.be/api/public/customers/' . $id, $params);
-        return $testvar;
+        return $data;
     }
 
     public function apiCall($url) {
@@ -49,10 +49,11 @@ class APICaller
 
     public function apiPUTCall($url, $params) {
         $ch = curl_init();
-        $data = json_encode($params);
+        $data_json = json_encode($params);
         curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_json)));
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         return $result;

@@ -24,7 +24,7 @@ class CoachController extends Controller
     public function customerAction($response = null)
     {
         $customers = $this->get('api')->customerOverview();
-        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers, "rowAmount" => count($customers), "response" => $response]);
+        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers]);
     }
 
     /**
@@ -54,19 +54,16 @@ class CoachController extends Controller
     }
 
     /**
-     * @Route("/coach/customer", name="update_habits")
+     * @Route("/coach/customerUpdated", name="update_habits")
      */
     public function updateHabitsAction()
     {
-        /*$id = $request->get('id');
+        $request = Request::createFromGlobals();
+
+        $id = $request->get('id');
         $habit1 = $request->get('habit1');
         $habit2 = $request->get('habit2');
         $habit3 = $request->get('habit3');
-        */
-        $id = $_POST['id'];
-        $habit1 = $_POST['habit1'];
-        $habit2 = $_POST['habit2'];
-        $habit3 = $_POST['habit3'];
 
         $response = $this->get('api')->updateHabitsForCustomerByID($id, $habit1, $habit2, $habit3);
         $customers = $this->get('api')->customerOverview();
