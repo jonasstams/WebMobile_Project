@@ -6,3 +6,5 @@ parameters:
 services:
     api:
         class: AppBundle\Service\APICaller
+    rest:
+        class: AppBundle\Service\RestCurl

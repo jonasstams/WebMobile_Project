@@ -24,6 +24,7 @@ class CoachController extends Controller
     public function customerAction($response = null)
     {
         $customers = $this->get('api')->customerOverview();
+        /*$customers = $this->get('rest')->get('www.jonasstams.be/api/public/customers');*/
         return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers]);
     }
 
