@@ -20,7 +20,7 @@
             {% if response == 200 %}
                     <p id="statusOK" class="status">Habits succesfully edited!</p>
                 {% else %}
-                    <p id="statusNOK" class="status">Habits succesfully edited!</p>
+                    <p id="statusNOK" class="status">Something went wrong! :( Status code: {{ response  }}</p>
             {% endif %}
         {%  endif %}
     </div>
