@@ -9,12 +9,21 @@
         {{ parent() }}
         <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="{{ asset('js/searchFunction.js') }}"></script>
-
+        <script src="{{ asset('js/coach.js') }}"></script>
     {% endblock %}
     {% block stylesheets %}
         {{ parent() }}
         <link rel="stylesheet" type="text/css" href="{{ asset('css/coach.css') }}">
     {% endblock %}
+    <div>
+        {% if response is defined %}
+            {% if response == 200 %}
+                    <p id="statusOK" class="status">Habits succesfully edited!</p>
+                {% else %}
+                    <p id="statusNOK" class="status">Habits succesfully edited!</p>
+            {% endif %}
+        {%  endif %}
+    </div>
     <input id="search" type="text" placeholder="Search..." class="center-block"/>
     </br>
     </br>

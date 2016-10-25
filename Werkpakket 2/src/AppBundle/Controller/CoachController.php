@@ -6,8 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+require_once (__DIR__ . '/RestCurl.php');
+
 class CoachController extends Controller
 {
+
     /**
      * @Route("/coach/", name="coach_route")
      */
@@ -21,11 +24,11 @@ class CoachController extends Controller
     /**
      * @Route("/coach/customer", name="coach_customer_overview")
      */
-    public function customerAction($response = null)
+    public function customerAction()
     {
-        $customers = $this->get('api')->customerOverview();
-        /*$customers = $this->get('rest')->get('www.jonasstams.be/api/public/customers');*/
-        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers]);
+        $customers = RestCurl::get('www.jonasstams.be/api/public/customers');
+        $customers_JSON = $customers['data'];
+        return $this->render('AppBundle:Coach:customer.html.twig', ["customers" => $customers_JSON]);
     }
 
     /**
@@ -33,16 +36,11 @@ class CoachController extends Controller
      */
     public function customerReportOverviewAction($id)
     {
-        $reports = $this->get('api')->reportsByCustomerID($id);
-        $numberOfReports = count($reports);
-        $firstReport = $reports[0]; //Enkel eerste om als active div te zetten
-        array_shift($reports); //Alle reports buiten de eerste
-        $customer = $this->get('api')->customerByID($id);
-        return $this->render('AppBundle:Coach:customer.report.overview.html.twig', ["reports" => $reports,
-                                                                                    "firstReport" => $firstReport,
-                                                                                    "customer" => $customer,
-                                                                                    "id" => $id
-                                                                                    ]);
+        $reports = RestCurl::get('www.jonasstams.be/api/public/reports/' . $id);
+        $customer = RestCurl::get('www.jonasstams.be/api/public/customers/' . $id);
+        $reports_JSON = $reports['data'];
+        $customer_JSON = $customer['data'];
+        return $this->render('AppBundle:Coach:customer.report.overview.html.twig', ["reports" => $reports_JSON, "customer" => $customer_JSON, "id" => $id]);
     }
 
     /**
@@ -50,8 +48,9 @@ class CoachController extends Controller
      */
     public function customerHabitsOverviewAction($id)
     {
-        $customer = $this->get('api')->customerByID($id);
-        return $this->render('AppBundle:Coach:customer.habits.overview.html.twig', ["customer" => $customer]);
+        $customer = RestCurl::get('www.jonasstams.be/api/public/customers/' . $id);
+        $customer_JSON = $customer['data'];
+        return $this->render('AppBundle:Coach:customer.habits.overview.html.twig', ["customer" => $customer_JSON]);
     }
 
     /**
@@ -62,13 +61,17 @@ class CoachController extends Controller
         $request = Request::createFromGlobals();
 
         $id = $request->get('id');
-        $habit1 = $request->get('habit1');
-        $habit2 = $request->get('habit2');
-        $habit3 = $request->get('habit3');
+        $params = array(
+            "habit1"=> $request->get('habit1'),
+            "habit2"=> $request->get('habit2'),
+            "habit3"=> $request->get('habit3'),
+        );
 
-        $response = $this->get('api')->updateHabitsForCustomerByID($id, $habit1, $habit2, $habit3);
-        $customers = $this->get('api')->customerOverview();
-        return $this->render('AppBundle:Coach:customer.html.twig', ["response" => $response, "customers" => $customers]);
+        $response = RestCurl::put('www.jonasstams.be/api/public/customers/' . $id, $params);
+        $customers = RestCurl::get('www.jonasstams.be/api/public/customers');
+        $response_JSON = $response['status'];
+        $customers_JSON = $customers['data'];
+        return $this->render('AppBundle:Coach:customer.html.twig', ["response" => $response_JSON, "customers" => $customers_JSON]);
     }
 }
 

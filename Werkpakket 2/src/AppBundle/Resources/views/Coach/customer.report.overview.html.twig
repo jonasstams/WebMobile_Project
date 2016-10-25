@@ -20,48 +20,6 @@
         <div id="reportCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item reportItem active">
-                    <p id="datum">{{ firstReport.created_at | date("d M Y") }}</p>
-                    <div class="left-inner-section">
-                        <span class="glyphicon glyphicon-scale coachIcon" aria-hidden="true"></span><p>{{ firstReport.weight }} kg</p>
-                        <br>
-                        <span class="glyphicon glyphicon-apple coachIcon" aria-hidden="true"></span><p>{{ firstReport.calories }} calories</p>
-                    </div>
-                    <div class="right-inner-section">
-                        <table>
-                            <tr>
-                                <td><p>{{ customer.habit1 }}</p></td>
-                                <td>
-                                    {% if firstReport.habit1_done == 1 %}
-                                        <span class="glyphicon glyphicon-ok coachIcon" aria-hidden="true"></span>
-                                    {% else %}
-                                        <span class="glyphicon glyphicon-remove coachIcon" aria-hidden="true"></span>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><p>{{ customer.habit2 }}</p></td>
-                                <td>
-                                    {% if firstReport.habit2_done == 1 %}
-                                        <span class="glyphicon glyphicon-ok coachIcon" aria-hidden="true"></span>
-                                    {% else %}
-                                        <span class="glyphicon glyphicon-remove coachIcon" aria-hidden="true"></span>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><p>{{ customer.habit3 }}</p></td>
-                                <td>
-                                    {% if firstReport.habit3_done == 1 %}
-                                        <span class="glyphicon glyphicon-ok coachIcon" aria-hidden="true"></span>
-                                    {% else %}
-                                        <span class="glyphicon glyphicon-remove coachIcon" aria-hidden="true"></span>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
                 {% for report in reports %}
                     <div class="item reportItem">
                         <p id="datum">{{ report.created_at | date("d M Y") }}</p>

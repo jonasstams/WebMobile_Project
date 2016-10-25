@@ -103,3 +103,15 @@ ul {
 .customerOverview {
     background: #70e99a;
 }
+
+.status {
+    display: none;
+}
+
+#statusOK {
+    color: #70e99a;
+}
+
+#statusNOK {
+    color: #AA3333;
+}

@@ -5,7 +5,7 @@
  * https://github.com/jmoraleda/php-rest-curl
  * (c) 2014 Jordi Moraleda
  */
-namespace AppBundle\Service;
+namespace AppBundle\Controller;
 
 class RestCurl {
   public static function exec($method, $url, $obj = array()) {
