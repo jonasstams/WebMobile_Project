@@ -5,11 +5,8 @@
  * Date: 14/10/2016
  * Time: 11:54
  */
-require_once __DIR__.'/../models/Customer.php';
-require_once __DIR__.'/../controllers/CustomerController.php';
 
-
-
+use App\Controllers\CustomerController;
 class CustomerControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $customer;
@@ -40,7 +37,7 @@ class CustomerControllerTest extends PHPUnit_Framework_TestCase
                 }";
     }
 
-    public function testFindAll_OK() {
+    public function testFindAll() {
         $customer1 = new Customer();
         $customer2 = new Customer();
         $customer3 = new Customer();
@@ -68,20 +65,22 @@ class CustomerControllerTest extends PHPUnit_Framework_TestCase
         $customerController->handleFindAllCustomers();
     }
 
-    public function testFindAll_NoContent() {
+    public function testFindAllWithCustomerEqualsNull() {
 
         $this->customerRepositoryMock->expects($this->once())
             ->method('findAllAsArray')
             ->will($this->returnValue(null));
 
         $this->customerViewMock->expects($this->once())
-            ->method('sendHttpNoContent');
+            ->method('show');
 
+        $this->customerRepositoryMock->expects($this->once())
+            ->method('findMetaData');
 
         $customerController = new CustomerController($this->customerRepositoryMock, $this->customerViewMock);
         $customerController->handleFindAllCustomers();
     }
-    public function testFindCustomerById_OK()
+    public function testFindCustomerByIdWithWorkingId()
     {
         $this->customerRepositoryMock->expects($this->once())
             ->method('findCustomerById')
@@ -94,74 +93,43 @@ class CustomerControllerTest extends PHPUnit_Framework_TestCase
         $customerController->handleFindCustomerById(self::CUST_ID);
     }
 
-    public function testFindCustomerById_NoContent()
+    public function testFindCustomerByIdWithCustomerEqualsNull()
     {
         $this->customerRepositoryMock->expects($this->once())
             ->method('findCustomerById')
             ->will($this->returnValue(null));
 
         $this->customerViewMock->expects($this->once())
-            ->method('sendHttpNoContent');
+            ->method('show');
+
+        $this->customerRepositoryMock->expects($this->once())
+            ->method('findMetaData');
 
         $customerController = new CustomerController($this->customerRepositoryMock, $this->customerViewMock);
         $customerController->handleFindCustomerById(self::CUST_ID);
     }
 
-    public function testAddCustomer_Created()
+    public function testAddCustomer()
     {
 
         $this->customerRepositoryMock->expects($this->once())
-            ->method('addCustomer')
-            ->will($this->returnValue(true));
+            ->method('addCustomer');
 
-        $this->customerViewMock->expects($this->once())
-            ->method('sendHttpCreated');
-        $customerController = new CustomerController($this->customerRepositoryMock, $this->customerViewMock);
+        $customerController = new CustomerController($this->customerRepositoryMock);
         $customerController->handleAddCustomer($this->exampleJson);
-    }
-
-    public function testAddCustomer_BadRequest()
-    {
-        $this->customerRepositoryMock->expects($this->once())
-            ->method('addCustomer')
-            ->will($this->returnValue(false));
-
-        $this->customerViewMock->expects($this->once())
-            ->method('sendHttpBadRequest');
-        $customerController = new CustomerController($this->customerRepositoryMock, $this->customerViewMock);
-        $customerController->handleAddCustomer($this->exampleJson);
-
     }
     
-    public function testChangeCustomer_Accepted()
+    public function testChangeCustomer()
     {
 
         $this->customerRepositoryMock->expects($this->once())
-            ->method('changeCustomer')
-            ->will($this->returnValue(true));
+            ->method('changeCustomer');
 
-        $this->customerViewMock->expects($this->once())
-            ->method('sendHttpAccepted');
-
-        $customerController = new CustomerController($this->customerRepositoryMock, $this->customerViewMock);
-        $customerController->handleChangeCustomer(self::CUST_ID,$this->exampleJson);
-    }
-
-    public function testChangeCustomer_BadRequest()
-    {
-
-        $this->customerRepositoryMock->expects($this->once())
-            ->method('changeCustomer')
-            ->will($this->returnValue(false));
-
-        $this->customerViewMock->expects($this->once())
-            ->method('sendHttpBadRequest');
-
-        $customerController = new CustomerController($this->customerRepositoryMock, $this->customerViewMock);
+        $customerController = new CustomerController($this->customerRepositoryMock);
         $customerController->handleChangeCustomer(self::CUST_ID,$this->exampleJson);
     }
     
-    public function testFindHabitsFromCustomerByCustomerId_OK()
+    public function testFindHabitsFromCustomerByCustomerId()
     {
         $this->customerRepositoryMock->expects($this->once())
             ->method('findHabitsFromCustomerById')
@@ -174,14 +142,17 @@ class CustomerControllerTest extends PHPUnit_Framework_TestCase
         $customerController->handleFindHabitsFromCustomerByCustId(self::CUST_ID);
     }
 
-    public function testFindHabitsFromCustomerByCustomerId_NoContent()
+    public function testFindHabitsFromCustomerByCustomerIdWithCustomerEqualsNull()
     {
         $this->customerRepositoryMock->expects($this->once())
             ->method('findHabitsFromCustomerById')
             ->will($this->returnValue(null));
 
+        $this->customerRepositoryMock->expects($this->once())
+            ->method('findMetaData');
+
         $this->customerViewMock->expects($this->once())
-            ->method('sendHttpNoContent');
+            ->method('show');
 
         $customerController = new CustomerController($this->customerRepositoryMock, $this->customerViewMock);
         $customerController->handleFindHabitsFromCustomerByCustId(self::CUST_ID);

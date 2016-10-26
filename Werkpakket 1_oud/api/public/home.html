@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Lifestyle API | Home</title>
+    <meta name="keywords" content="An API written by students of the PXL in Belgium" />
+    <link href="css/style.css" rel="stylesheet" type="text/css"  media="all" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<!--start-wrap--->
+<div class="wrap">
+    <!---start-header---->
+    <div class="header">
+        <div class="logo">
+            <h1><a href="#">Welcome to Lifestyle API</a></h1>
+        </div>
+    </div>
+    <!---End-header---->
+    <!--start-content------>
+    <div class="content">
+        <img src="images/home-img.png" title="home" />
+        <p><span><label>O</label>hh.....</span>Let's check all the routes.</p>
+        <table id="route-table">
+            <tr >
+                <th style="border: 1px solid black">Request</th>
+                <th style="border: 1px solid black">Result</th>
+                <th style="border: 1px solid black">Route</th>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><a href="http://localhost/api/public/customers">All Customers</a></td>
+                <td>/api/public/customers</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td><a href="http://localhost/api/public/customers">Add customer</a></td>
+                <td>/api/public/customers</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><a href="http://localhost/api/public/customers/2">Get customer by id</a></td>
+                <td>/api/public/customers/<span>{id}</span></td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td><a href="http://localhost/api/public/customers/2">Change customer</a></td>
+                <td>/api/public/customers/{id}</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><a href="http://localhost/api/public/habits/2">Get habits from customer</a></td>
+                <td>/api/public/habits/{cust_id}</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td><a href="http://localhost/api/public/reports/2">Get reports from customer</a></td>
+                <td>/api/public/reports/{cust_id}</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td><a href="http://localhost/api/public/reports/2">Add report to customer</a></td>
+                <td>/api/public/reports/{cust_id}</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td><a href="http://localhost/api/public/reports/2">Change reports</td>
+                <td>/api/public/reports/{report_id}</td>
+            </tr>
+        </table>
+
+        <div class="copy-right">
+            <p>&#169 All rights Reserved</p>
+        </div>
+    </div>
+    <!--End-Cotent------>
+</div>
+<!--End-wrap--->
+</body>
+</html>
+

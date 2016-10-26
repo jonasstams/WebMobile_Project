@@ -6,3 +6,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php [L]
 </IfModule>
+<Limit GET POST PUT>
+  Allow from all
+</Limit>

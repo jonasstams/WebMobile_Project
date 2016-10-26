@@ -27,7 +27,7 @@ class CustomerController extends Controller
         }else{
             $this->repository = $repository;
         }
-        $this->customer = $this->model('Customer');
+        $this->customer = new Customer();
 
         if($view == null)
         {
@@ -64,22 +64,37 @@ class CustomerController extends Controller
     public function handleAddCustomer($postData)
     {
         $customer = $this->decodeJson($postData);
-        $customerAdded = $this->repository->addCustomer($customer);
-        if($customerAdded){
+
+        $customerAddResult = $this->repository->addCustomer($customer);
+
+        if($customerAddResult['created']){
             $this->view->sendHttpCreated();
         }else{
-            $this->view->sendHttpBadRequest();
+            $this->view->sendHttpBadRequest(array($customerAddResult['error']));
         }
     }
 
     public function handleChangeCustomer($customerId,$putData)
     {
         $customerUpdateData = $this->decodeJson($putData);
-        $customerChanged = $this->repository->changeCustomer($customerId, $customerUpdateData);
-        if($customerChanged){
+
+        $customerChangeResult = $this->repository->changeCustomer($customerId, $customerUpdateData);
+        
+        if($customerChangeResult['changed']){
             $this->view->sendHttpAccepted();
         }else{
-            $this->view->sendHttpBadRequest();
+            $this->view->sendHttpBadRequest(array($customerChangeResult['error']));
+        }
+    }
+
+    public function handleRemoveCustomer($customerId)
+    {
+       
+         $customerRemoved = $this->repository->removeCustomer($customerId);
+            if($customerRemoved)
+                $this->view->sendHttpAccepted();
+            else{
+                $this->view->sendHttpBadRequest(array('No customer removed because no customer found with id: ' . $customerId));
         }
     }
 

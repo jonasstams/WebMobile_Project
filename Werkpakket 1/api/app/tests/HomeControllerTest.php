@@ -6,7 +6,7 @@
  * Date: 17/10/2016
  * Time: 16:35
  */
-require_once __DIR__.'/../controllers/HomeController.php';
+use App\Controllers\HomeController;
 class HomeControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $homeViewMock;
@@ -23,6 +23,14 @@ class HomeControllerTest extends PHPUnit_Framework_TestCase
             ->method('showHomePage');
         $homeController = new HomeController($this->homeViewMock);
         $homeController->openHomePage();
+
+    }
+    public function testOpen404Page()
+    {
+        $this->homeViewMock->expects($this->once())
+            ->method('show404Page');
+        $homeController = new HomeController($this->homeViewMock);
+        $homeController->open404Page();
 
     }
 }

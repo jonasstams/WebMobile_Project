@@ -7,15 +7,16 @@
  */
 class View
 {
-    public function show($data = null, $statusCode = 200){
-        $this->returnStatusCode($statusCode);
-        header('Content-Type: application/json');
+    public function show($data){
+		header('Content-Type: application/json');
         echo $this->encodeJson($data);
-
     }
 
     private function encodeJson($data) {
-        return json_encode($data['data']);
+        if(isset($data['data']))
+            return json_encode($data['data']);
+        else
+            return json_encode($data);
     }
 
     public function showJson($json) {
@@ -23,28 +24,45 @@ class View
         return $json;
     }
 
-    public function sendHttpNotFound()
-    {
-        $this->returnStatusCode(404);
+    public function sendResponse($responseCode = 200){
+        http_response_code($responseCode);
     }
 
-    public function sendHttpNoContent()
-    {
-        $this->returnStatusCode(204);
+    public function sendError($errors = []){
+        header('Content-Type: application/json');
+        return $this->encodeJson($errors);
     }
+
+    public function sendOkReponse(){
+        $this->sendResponse();
+    }
+
 
     public function sendHttpCreated(){
-        $this->returnStatusCode(201);
+        $this->sendResponse(201);
     }
 
     public function sendHttpAccepted(){
-        $this->returnStatusCode(202);
+        $this->sendResponse(202);
     }
 
-    public function sendHttpBadRequest(){
-        $this->returnStatusCode(400);
+    public function sendHttpNoContent(){
+        $this->sendResponse(204);
     }
-    private function returnStatusCode($statusCode = 404){
-        http_response_code($statusCode);
+
+    public function sendHttpNotModified(){
+        $this->sendResponse(304);
+    }
+
+     public function sendHttpBadRequest($errors = []){
+        $this->sendResponse(400);
+        foreach($errors as $error){
+            $data['errors'][] = $error;
+        }
+        
+        $this->show($data);
+    }
+     public function sendHttpNotFound(){
+        $this->sendResponse(404);
     }
 }

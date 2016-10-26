@@ -1,9 +1,7 @@
 <?php
 require_once('IDailyReportRepository.php');
 require_once('DailyReport.php');
-
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+require_once('CustomerRepository.php');
 /**
  * Created by PhpStorm.
  * User: Jonas
@@ -15,25 +13,16 @@ use Monolog\Handler\StreamHandler;
 class DailyReportRepository implements IDailyReportRepository
 {
     private $connection = null;
-    private $log;
-
+ 
     public function __construct(\PDO $connection)
     {
-        try {
             $this->connection = $connection;
-            $this->log = new Logger('PDOReport_Logger');
-            $this->log->pushHandler(new StreamHandler('../logs/PDOReport_Logfile.log', Logger::WARNING));
-        } catch (PDOException $e) {
-            $this->log->addWarning('Unable to connect with the database.');
-            $this->log->addError($e->getMessage());
-        }
     }
 
 
     public function findDailyReportById($dailyReportId)
     {
         try {
-            $this->log->addWarning('findDailyReportsById executed with id = ' . $dailyReportId);
             $stmt = $this->connection->prepare('SELECT * FROM daily_report WHERE id=?');
             $stmt->bindParam(1, $dailyReportId, \PDO::PARAM_INT);
             $stmt->execute();
@@ -43,18 +32,16 @@ class DailyReportRepository implements IDailyReportRepository
             if (!empty($dailyReport)) {
                 return $dailyReport;
             } else {
-                $this->log->addError("Daily Report with id = " . $dailyReportId . " does not exist.");
                 return null;
             }
         } catch (PDOException $e) {
-            $this->log->addError($e->getMessage());
+            return null;
         }
     }
 
     public function findDailyReportsByCustomerId($customerId)
     {
         try {
-            $this->log->addWarning('findDailyReportsByCustomerId executed for customer with id = ' . $customerId);
             $stmt = $this->connection->prepare('SELECT * FROM daily_report WHERE customer_id=?');
             $stmt->bindParam(1, $customerId, \PDO::PARAM_INT);
             $stmt->execute();
@@ -67,29 +54,66 @@ class DailyReportRepository implements IDailyReportRepository
             if (count($dailyReports) > 0) {
                 return $dailyReports;
             } else {
-                $this->log->addError("Customer with id = " . $customerId . " does not exist.");
                 return null;
             }
         } catch (PDOException $e) {
-            $this->log->addError($e->getMessage());
+            return null;
         }
     }
 
     public function addDailyReport($customerId, $dailyReport)
     {
-        try {
-            $this->log->addWarning('addDailyReport executed for customer with id = ' . $customerId);
-            $objDailyReport = new DailyReport();
-            $objDailyReport->setCustomerId($customerId);
-            $objDailyReport->setHabit1Done($dailyReport->habit1_done);
-            $objDailyReport->setHabit2Done($dailyReport->habit2_done);
-            $objDailyReport->setHabit3Done($dailyReport->habit3_done);
-            $objDailyReport->setWeight($dailyReport->weight);
-            $objDailyReport->setCalories($dailyReport->calories);
-            $objDailyReport->setExtraInformation($dailyReport->extra_information);
+        if(!empty($dailyReport->created_at)){
+            $date = DateTime::createFromFormat('d-m-Y', $dailyReport->created_at)->format('Y-m-d');
+        }else{
+            $date = date("Y-m-d");
+        }
 
-            $stmt = $this->connection->prepare("INSERT INTO daily_report(customer_id, habit1_done, habit2_done, habit3_done, weight, calories, extra_information)
-                                            VALUES(:customer_id, :habit1_done, :habit2_done, :habit3_done, :weight, :calories, :extra_information)");
+       $customerRepository = new CustomerRepository($this->connection);
+       
+        $customerExists = $customerRepository->checkCustomerExists($customerId);
+
+        if($customerExists){
+            if($this->checkIfNoDailyReportOnDate($customerId, $date)){
+            try {
+            $objDailyReport = new DailyReport();
+
+            $objDailyReport->setCustomerId($customerId);
+
+            if(isset($dailyReport->habit1_done))
+            $objDailyReport->setHabit1Done($dailyReport->habit1_done);
+            else
+            $objDailyReport->setHabit1Done(false);
+
+            if(isset($dailyReport->habit2_done))
+            $objDailyReport->setHabit2Done($dailyReport->habit2_done);
+            else
+            $objDailyReport->setHabit2Done(false);
+
+            if(isset($dailyReport->habit3_done))
+            $objDailyReport->setHabit3Done($dailyReport->habit3_done);
+            else
+            $objDailyReport->setHabit3Done(false);
+
+            if(isset($dailyReport->weight))
+            $objDailyReport->setWeight($dailyReport->weight);
+            else
+            $objDailyReport->setWeight(0);
+
+            if(isset($dailyReport->calories))
+            $objDailyReport->setCalories($dailyReport->calories);
+            else
+            $objDailyReport->setCalories(0);
+
+            if(isset($dailyReport->extra_information))
+            $objDailyReport->setExtraInformation($dailyReport->extra_information);
+            else
+            $objDailyReport->setExtraInformation('No information given');
+
+            $objDailyReport->setCreatedAt($date);
+
+            $stmt = $this->connection->prepare("INSERT INTO daily_report(customer_id, habit1_done, habit2_done, habit3_done, weight, calories, extra_information, created_at)
+                                            VALUES(:customer_id, :habit1_done, :habit2_done, :habit3_done, :weight, :calories, :extra_information, :created_at)");
             $stmt->execute(array(
                 "customer_id" => $objDailyReport->getCustomerId(),
                 "habit1_done" => $objDailyReport->getHabit1Done(),
@@ -97,25 +121,32 @@ class DailyReportRepository implements IDailyReportRepository
                 "habit3_done" => $objDailyReport->getHabit3Done(),
                 "weight" => $objDailyReport->getWeight(),
                 "calories" => $objDailyReport->getCalories(),
-                "extra_information" => $objDailyReport->getExtraInformation()
+                "extra_information" => $objDailyReport->getExtraInformation(),
+                "created_at" => $objDailyReport->getCreatedAt()
             ));
-            $this->log->addWarning('Daily report created.');
-            return true;
+            return array("created" => true);
         } catch (PDOException $e) {
-            $this->log->addError($e->getMessage());
-            return false;
+             return array("created" => false, "error" => $e->getMessage());
         }
-    }
+             }else{
+            return array("created" => false,"error" => 'Only 1 daily reports per day! id:'. $customerId . ' date:' .$date);
+        }
+        
+        }else{
+                return array("created" => false,"error" => 'No customer found with id '. $customerId);
+        
+        }
+   }
+     
 
     public function changeDailyReport($dailyReportId, $dailyReportUpdate)
     {
         try
         {
-            $this->log->addWarning('changeDailyReport executed for daily report with id = ' . $dailyReportId);
-            
-            if(!empty($dailyReportUpdate))
-            {
-                $dailyReport = $this->findDailyReportById($dailyReportId);
+            $dailyReport = $dailyReport = $this->findDailyReportById($dailyReportId);
+            if($dailyReport != null){
+                if($this->validateUpdateData($dailyReportUpdate))
+                {
                 if(isset($dailyReportUpdate->habit1_done))
                     $dailyReport->setHabit1Done($dailyReportUpdate->habit1_done);
                 if(isset($dailyReportUpdate->habit2_done))
@@ -128,6 +159,7 @@ class DailyReportRepository implements IDailyReportRepository
                     $dailyReport->setCalories($dailyReportUpdate->calories);
                 if(isset($dailyReportUpdate->extra_information))
                     $dailyReport->setExtraInformation($dailyReportUpdate->extra_information);
+                    
 
                 $stmt = $this->connection->prepare("UPDATE daily_report SET habit1_done = :habit1_done, 
                                                                             habit2_done = :habit2_done, 
@@ -145,15 +177,33 @@ class DailyReportRepository implements IDailyReportRepository
                     "extra_information" => $dailyReport->getExtraInformation(),
                     "id" => $dailyReportId
                 ));
-                $this->log->addWarning('Daily report with id ' . $dailyReportId . ' changed.') ;
-                return true;
+                 return array("changed"=>true);   
+          
+            }else{
+                   return array("changed"=>false,"error"=>"Check your data, no correct PUT data found");   
             }
-            
+            }else{
+                return array("changed"=>false, "error"=>"No daily report with id: " . $dailyReportId);
+            }            
         }catch (PDOException $e)
         {
-            $this->log->addError($e->getMessage());
+            return array("changed"=>false,"error"=>$e->getMessage());   
         }
 
+    }
+
+    public function checkIfNoDailyReportOnDate($customerId, $date)
+    {
+         $stmt = $this->connection->prepare("SELECT * FROM daily_report WHERE customer_id = :customer_id AND Date(created_at) = :created_at");
+                $stmt->execute(array(
+                    "customer_id" => $customerId,
+                    "created_at" => date($date),
+                ));
+            if($stmt->rowCount() == 0){
+                return true;
+            }else{
+                return false;
+            }     return array("changed"=>false, "error"=>"No daily report with id: " . $dailyReportId);
     }
 
     public function countDailyReports()
@@ -168,13 +218,25 @@ class DailyReportRepository implements IDailyReportRepository
     {
         try
         {
-            $this->log->addWarning('findMetaData executed in DailyReportRepository');
-            $metaData = array("daily_report_count" => $this->countDailyReports(), "extra_information" => $extra_information);
+           $metaData = array("daily_report_count" => $this->countDailyReports(), "extra_information" => $extra_information);
             return array("meta" => $metaData);
 
         }catch (PDOException $e)
         {
-            $this->log->addError($e->getMessage());
+             return null;
         }
+    }
+
+    public function validateUpdateData($data)
+    {
+        if(isset($data)){
+              if(isset($data->habit1_done) || isset($data->habit2_done) || isset($data->habit3_done) || isset($data->weight) || isset($data->calories) )
+                return true;
+            else
+                return false;
+        }else{
+            return false;
+        }
+                
     }
 }

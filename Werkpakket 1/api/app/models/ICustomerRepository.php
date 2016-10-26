@@ -1,5 +1,4 @@
 <?php
-
 interface ICustomerRepository
 {
     public function findAll();

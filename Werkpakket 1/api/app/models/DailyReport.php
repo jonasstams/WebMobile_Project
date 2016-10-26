@@ -1,12 +1,11 @@
 <?php
-require_once(__DIR__ . '/../core/Model.php');
 /**
  * Created by PhpStorm.
  * User: Jonas
  * Date: 9/10/2016
  * Time: 1:54
  */
-class DailyReport extends Model
+class DailyReport
 {
     private $id;
 
@@ -23,6 +22,8 @@ class DailyReport extends Model
     private $calories;
 
     private $extra_information;
+
+    private $created_at;
 
 
     public function __construct()
@@ -117,6 +118,20 @@ class DailyReport extends Model
             $this->calories = $calories;
         }
     }
+
+
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt($createdAt)
+    {
+        if ($createdAt != null) {
+            $this->created_at = $createdAt;
+        }
+    }
+
 
 
     public function toArray()

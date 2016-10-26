@@ -3,7 +3,6 @@ class Customer
 {
     private $id;
 
-    private $user_id;
 
     private $first_name;
 
@@ -20,18 +19,6 @@ class Customer
     public function __construct()
     {
     }
-    
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-    }
-
 
     public function setId($id)
     {

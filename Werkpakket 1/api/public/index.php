@@ -38,6 +38,10 @@ $router->map('PUT', '/customers/[i:id]', function ($id) use (&$customerControlle
     $customerController->handleChangeCustomer($id, $jsonPutData);
 });
 
+$router->map('DELETE', '/customers/[i:id]', function($id) use (&$customerController){
+    $customerController->handleRemoveCustomer($id);
+});
+
 
 $router->map('GET', '/habits/[i:id]', function ($customerId) use ($customerController){
     $customerController->handleFindHabitsFromCustomerByCustId($customerId);
@@ -61,6 +65,9 @@ $router->map('GET', '/daily-reports/[i:id]', function ($dailyReportID) use ($dai
     $dailyReportController->handleFindDailyReportById($dailyReportID);
 });
 
+$router->map('GET', '/daily-reports-check/[i:id]/[date]', function ($customerId, $date) use ($dailyReportController){
+    $dailyReportController->handleCheckIfReportOnDate($customerId, $date);
+});
 $match = $router->match();
 
 

@@ -20,6 +20,16 @@ class Controller
         require_once '../app/views/' . $view . '.php';
     }
 */
+    public function getDbConnection()
+    {
+        $host = DB_HOST;
+        $user = DB_USER;
+        $password = DB_PASSWORD;
+        $database = DB_NAME;
+        $pdo = new PDO("mysql:host=$host;dbname=$database",
+            $user, $password);
+        return $pdo;
+    }
 
     public function getPostData(){
         $data = file_get_contents('php://input');

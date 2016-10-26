@@ -1,5 +1,4 @@
 <?php
-
 interface IDailyReportRepository
 {
     public function findDailyReportsByCustomerId($customerId);

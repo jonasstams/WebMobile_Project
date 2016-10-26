@@ -1,18 +1,17 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Jonas
  * Date: 16/10/2016
  * Time: 14:33
  */
-
-require_once __DIR__.'/../core/Controller.php';
-require_once __DIR__.'/../models/DailyReportRepository.php';
-require_once __DIR__.'/../models/CustomerRepository.php';
-require_once __DIR__.'/../models/IDailyReportRepository.php';
-require_once __DIR__.'/../models/DailyReport.php';
-require_once __DIR__.'/../views/DailyReportView.php';
+require_once (__DIR__.'/../core/Controller.php');
+require_once __DIR__.'/../core/Database.php';
+require_once (__DIR__.'/../models/IDailyReportRepository.php');
+require_once (__DIR__.'/../models/DailyReportRepository.php');
+require_once (__DIR__.'/../models/Customer.php');
+require_once (__DIR__.'/../models/DailyReport.php');
+require_once (__DIR__.'/../views/DailyReportView.php');
 class DailyReportController extends Controller
 {
     protected $dailyReport;
@@ -23,11 +22,11 @@ class DailyReportController extends Controller
     {
         if($repository == null)
         {
-            $this->repository = new DailyReportRepository($this->getDbConnection());
+            $this->repository = new DailyReportRepository(DataBase::getDbConnection());
         }else{
             $this->repository = $repository;
         }
-        $this->customer = $this->model('Customer');
+        $this->customer = new Customer();
 
         if($view == null)
         {
@@ -54,29 +53,40 @@ class DailyReportController extends Controller
                 $this->view->show(['data' => $dailyReports]);
             else
                 $this->view->sendHttpNoContent();
-    }
+     }
 
 
     public function handleAddDailyReportByCustomerId($customerId, $postData)
     {
         $dailyReport = $this->decodeJson($postData);
-        $dailyReportCreated = $this->repository->addDailyReport($customerId, $dailyReport);
-        if($dailyReportCreated)
+        
+        $dailyReportAddResult = $this->repository->addDailyReport($customerId, $dailyReport);
+        if($dailyReportAddResult['created']){
             $this->view->sendHttpCreated();
-        else
-            $this->view->sendHttpBadRequest();
-
-
+        }else{
+            $this->view->sendHttpBadRequest(array($dailyReportAddResult["error"]));
+        }
     }
 
     public function handleChangeDailyReport($dailyReportId, $putData)
     {
         $dailyReportUpdate = $this->decodeJson($putData);
-        $dailyReportChanged = $this->repository->changeDailyReport($dailyReportId, $dailyReportUpdate);
-        if($dailyReportChanged)
-                $this->view->sendHttpAccepted();
-            else
-                $this->view->sendHttpBadRequest();
+       $dailyReportChangeResult = $this->repository->changeDailyReport($dailyReportId, $dailyReportUpdate);
+       if($dailyReportChangeResult['changed'])
+            $this->view->sendHttpAccepted();
+        else
+              $this->view->sendHttpBadRequest(array($dailyReportChangeResult['error']));
+    }
+
+    public function handleCheckIfReportOnDate($customerId)
+    {
+        $count = $this->repository->checkIfDailyReportExistsOnDate($customerId);
+        
+        if($count > 0){
+            echo 'true';
+        }else{
+            echo 'false';
+        }
     }
 
 }
