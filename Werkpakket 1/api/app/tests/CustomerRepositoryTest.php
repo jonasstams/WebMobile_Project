@@ -7,7 +7,7 @@
  * Time: 13:47
  */
 
-
+require_once (__DIR__. '/../models/CustomerRepository.php');
 class CustomerRepositoryTest extends PHPUnit_Framework_TestCase
 {
     protected $pdoMock;
@@ -20,23 +20,42 @@ class CustomerRepositoryTest extends PHPUnit_Framework_TestCase
         $this->customerMock = $this->getMockBuilder(Customer::class)->getMock();
     }
 
-    public function testFindAllAsArray()
+    public function testFindAll()
     {
         $this->pdoStatementMock->expects($this->once())->method('execute');
 
-        $this->pdoStatementMock->expects($this->once())->method('fetchObject')->will($this->returnValue(false));
-        $this->customerMock->expects($this->any())->method('toArray');
+        $this->pdoStatementMock->expects($this->once())
+            ->method('fetchAll')
+            ->with(PDO::FETCH_ASSOC)
+            ->will($this->returnValue(null));
         $this->pdoMock->expects($this->once())
             ->method('prepare')
             ->with($this->equalTo('SELECT * FROM customers'))
             ->will($this->returnValue($this->pdoStatementMock));
 
-
         $customerRepository = new CustomerRepository($this->pdoMock);
 
         $customerRepository->findAll();
-
     }
+
+    public function testFindCustomerById()
+    {
+        $this->pdoStatementMock->expects($this->once())->method('execute');
+
+        $this->pdoStatementMock->expects($this->once())
+            ->method('fetchObject')
+            ->will($this->returnValue(null));
+        $this->pdoMock->expects($this->once())
+            ->method('prepare')
+            ->with($this->equalTo('SELECT * FROM customers WHERE id=?'))
+            ->will($this->returnValue($this->pdoStatementMock));
+
+        $customerRepository = new CustomerRepository($this->pdoMock);
+
+        $customerRepository->findCustomerById(1);
+    }
+
+
 }
 class PDOMock extends \PDO {
     public function __construct() {}

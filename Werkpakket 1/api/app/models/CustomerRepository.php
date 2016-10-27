@@ -14,26 +14,6 @@ class CustomerRepository implements ICustomerRepository
             $this->connection = $connection;
     }
 
-    public function findAllAsObject()
-    {
-        try {
-            $stmt = $this->connection->prepare('SELECT * FROM customers');
-            $stmt->execute();
-            $customers = [];
-            while($customer = $stmt->fetchObject('Customer'))
-            {
-                $customers[] = $customer;
-            }
-            if (count($customers) > 0) {
-                return $customers;
-            } else {
-                return null;
-                }
-        } catch (PDOException $e) {
-                return null;
-        }
-
-    }
 
     public function findAll()
     {
