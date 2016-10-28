@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Security\Core\Encoder;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 
@@ -46,6 +47,8 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $encoder = new Encoder\BCryptPasswordEncoder();
+            $user->setPassword($encoder->encodePassword($user->getPassword()));
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();

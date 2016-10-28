@@ -149,6 +149,13 @@ body{
 	opacity: 1;
 }
 
+.nice-button.half-button.form-button {
+	width: 100%;
+	margin-top:40px;
+	margin-right: 20px;
+	border:none;
+}
+
 #loginModal .modal-content p{
 	margin-bottom: 10px;
 }
@@ -188,33 +195,33 @@ body{
 	background-color: rgba(112, 233, 154, 0.3);
 	text-align: center;
 }
-#logoutModal .modal-body{
+#logoutModal .modal-body, #deleteModal .modal-body{
 	height: 150px;
 	padding: 0px;
 }
-#logoutModal .nice-button{
+#logoutModal .nice-button, #deleteModal .nice-button{
 	height: 60px;
 	padding-top: 0px;
 	float: right;
 	margin-right: 20px;
 }
 
-#logoutModal .nice-button p{
+#logoutModal .nice-button p, #deleteModal .nice-button p{
 	padding-top: 0px ;
 }
 
-#logoutModal .modal-content{
+#logoutModal .modal-content, #deleteModal .modal-content{
 	border-radius: 0px;
 }
 
-#user-table{
+#user-table, #user-show-table{
 	margin:auto;
 	text-align: left;
 	width: 40%;
 	font-size:19px;
 }
 
-#user-table th{
+#user-table th, #user-show-table th{
 	padding-bottom: 10px;
 	font-weight: bold;
 }
@@ -226,10 +233,28 @@ body{
 	vertical-align: top;
 	border-top: 1px solid #ddd;
 }
+#user-show-table td{
+	padding: 8px;
+	line-height: 1.42857143;
+	border-top: 1px solid #ddd;
+}
 
-#user-table td li a{
+
+#user-table td li a, #user-show-table td li a{
 	float:left;
 	margin-left:5px;
+}
+
+#user{
+	font-size:20px;
+}
+#user label{
+	margin-top:10px;
+	width: 10%;
+	text-align: left;
+}
+#user select, #user input{
+	width: 10%;
 }
 @media (min-width: 768px){
 	.modal-dialog {
