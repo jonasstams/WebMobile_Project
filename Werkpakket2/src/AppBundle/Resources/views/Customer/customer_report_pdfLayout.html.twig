@@ -1,0 +1,47 @@
+   </div>
+    <div class="row">
+        <div class="col-md-4">
+            <table id="table" class="table">
+                <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>{{ customer.first_name }}</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>{{ customer.first_name }}</td>
+                </tr>
+            </thead>
+            </table>
+        </div>
+
+    </div>
+    </br>
+    </br>
+
+    <table id="table" class="table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>{{ customer.habit1 }}</th>
+            <th>{{ customer.habit2 }}</th>
+            <th>{{ customer.habit3 }}</th>
+            <th>Weight</th>
+            <th>Calories</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for report in reports %}
+            <tr>
+                <td>{{ report.created_at }}</td>
+                <td>{{ report.habit1_done }}</td>
+                <td>{{ report.habit2_done }}</td>
+                <td>{{ report.habit3_done }}</td>
+                <td>{{ report.weight }}</td>
+                <td>{{ report.calories }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
