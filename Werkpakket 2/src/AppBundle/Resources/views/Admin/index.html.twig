@@ -14,7 +14,7 @@
         <div id="menu">
             <div id="menuLeftBlock">
                 <div class="colored-buttons" >
-                    <a href="#"><div class="nice-button half-button user"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span><p>{{ app.user.username|capitalize }} </p></div></a>
+                    <a href="#"><div class="nice-button half-button"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span><p>{{ app.user.username|capitalize }} </p></div></a>
                     <div id="menu-settingsLeftBlock">
                     <a data-toggle="modal" data-target="#logoutModal"><div class="nice-button half-button logout"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Log out</p></div></a>
                     </div>
@@ -25,7 +25,7 @@
             </div>
             <div id="menuRightBlock">
                 <div id="menu-settingsLeftBlock">
-                    <a href="#"><div class="nice-button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><p>Manage Coaches</p></div></a>
+                    <a href={{ path("user_index") }}><div class="nice-button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><p>Manage Coaches</p></div></a>
                 </div>
                 <div id="menu-settingsRightBlock">
                     <a href="#"><div class="nice-button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><p>Manage Customers</p></div></a>
