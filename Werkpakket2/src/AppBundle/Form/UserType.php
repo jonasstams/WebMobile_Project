@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Entity\User;
@@ -20,17 +21,29 @@ class UserType extends AbstractType
     {
 
         $builder
-            ->add('username')
-            ->add('password')
+            ->add('username', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'
+                )
+            ))
+            ->add('password', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'
+                )
+            ))
             ->add('rolesString', ChoiceType::class, array(
                 'choices' => array('Admin' => 'ROLE_ADMIN','Coach' => 'ROLE_COACH', 'Both' => 'ROLE_ADMIN ROLE_COACH'),
                 'multiple' => false,
-                'required' => true
+                'label'  => 'Role',
+                'required' => true,
+                'attr' => array(
+                    'class' => 'form-control'
+                )
 
-        ));
+            ));
 
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
