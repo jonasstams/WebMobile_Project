@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
+        {% block stylesheets %}
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <div class="wrap">
+        <div class="header">
+            <div class="logo">
+                {% block headertitle %}
+
+                {% endblock %}
+            </div>
+        </div>
+        <div class="content">
+            {% block body %}
+
+            {% endblock %}
+            {% block footer %}
+            <!--<div class="copy-right">
+                <p>&#169 All rights Reserved</p>
+            </div>-->
+            {% endblock %}
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ asset('js/modal.js') }}"></script>
+        {% block javascripts %}
+
+        {% endblock %}
+
+    </div>
+    </body>
+</html>
