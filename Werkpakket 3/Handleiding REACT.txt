@@ -1,0 +1,63 @@
+Okee mannen, ik heb geprobeerd om het zo simpel mogelijk te maken.
+
+1) Hoe run ik het project?
+
+	- Installeer eerst npm, webpack en webpack-dev-server (staat op Blackboard bij 'Voorbereiding React')
+	- Ga via uw terminal naar de projectmap
+	- Voer dit commando uit: 'npm run dev' (dit voert een script uit dat staat in de file 'package.json' bij scripts en dit zorgt ervoor dat uw project gerund wordt op localhost:8080)
+
+
+## In de '/src/js'-map staan alle files die je moet configureren voor het project, van de rest moet je afblijven (dat is config shit) ##
+
+2) Wat moet er nog gebeuren in de components-map? 
+
+	- In de Overview-component (localhost:8080/): niets
+	- In de Reports-component (localhost:8080/reports): de 1-tjes en 0-tjes laten vervangen door vinkjes en kruisjes (optioneel)
+	- In de AddReport-component (localhost:8080/add): niets
+	- In de NavBar-component: niets en afblijven liefst
+	- In de App-component: niets en afblijven liefst
+
+3) Wat moet er nog gebeuren in de actions-map?
+	
+	- In de reportActions: niets
+	- In de customerActions: (in postDailyReportForCustomerByID()) telkens wanneer ik een POST-request probeer te versturen met axios (in de les hebben we fetch gebruikt, maar dit is veel gemakkelijker) 
+				 krijg ik die CORS-error dat ik in de les ook kreeg. Toen heeft Jonas dat gefixt, maar ondertussen werkt het niet meer.
+				 Geen idee hoe dat komt (zie console wanneer je een report toevoegt), ik heb dus ook geen idee of die methode wel werkt of niet.
+
+4) Waar moet ik rekening mee houden?
+
+	- De grootste ergernis, waar ik nog altijd niet ben achter gekomen is hoe je in het begin een user-id in de url meegeeft (bv. localhost:8080/?id=2)
+	  Hierdoor staat er in elke component per methode die een API-call uitvoert er hardcoded mijn ID (2) bij en die moet je dus overal veranderen eer je het overal over dezelfde customer wilt hebben
+	
+	- De App-component: deze klasse zorgt ervoor dat alle componenten (NavBar, Overview, Reports, ...) mooi in 1 pagina geladen worden.
+	  Wanneer je op het tabblad klikt om naar de reports te gaan wordt de NavBar-component dus nooit herladen, het is altijd die {this.props.children} die een andere component wordt.
+	
+	- Reducers: deze files dienen ervoor om uw objecten die je uit de actions haalt in uw state te steken (denk ik)
+	- State: de grote "databank" met de gedeelde objecten tussen Componenten in
+	- @connect vanboven aan klasses: dit is om te connecteren met de store waaruit je je state haalt om deze waarden te gebruiken in de code
+
+	- index.js in reducersmap: dit is een kleine file die de Reducers samenbrengt zodat je deze niet overal twee keer moet importen.
+	- client.js: deze file gaat ervoor zorgen dat alles mooi met elkaar kan communiceren dmv de Provider en Routes 
+	- Provider: afblijven, deze geeft gewoon de store mee aan alle Routes
+	- Route/IndexRoute: deze tags zorgen voor dat alles met elkaar kan communiceren en ga je niet moeten bewerken tenzij je een nieuwe pagina (met pad) wilt toevoegen (+ bijhorende Component)
+
+5) Aan welke files ga ik nooit iets moeten veranderen?
+	
+	- store.js
+	- index.js in reducersmap
+	- index.html (tenzij voor CSS en JQuery) (mijn css staat daar nog inline, maar dat is niet zoveel)
+	- client.js (tenzij je Routes wilt toevoegen)
+	- package.json
+	- webpack.config.js
+
+6) Ik snap er de ballen van 
+
+	- Filmkes op Youtube kijken: https://www.youtube.com/watch?v=MhkGQAoc7bc&index=1&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b (gewoon deze hele lijst tot en met Redux en je zal het wel min of meer begrijpen)
+
+7) Wat moet er dus nog concreet gebeuren?
+
+	- ID van Customer moet in URL worden meegegeven
+	- Report moet kunnen worden toegevoegd voor de Customer
+	- Hier en daar wat code-opsmukkerij, dat zie je zelf wel
+
+Succes mannen x
