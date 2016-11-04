@@ -12,10 +12,32 @@ import { fetchReports } from "../actions/reportActions"
   };
 })
 export default class Overview extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(fetchCustomer(2));
-    this.props.dispatch(fetchReports(2));
-  }
+
+
+	constructor() {
+		super();
+		this.state = {id: 1};
+		console.log(this.id);
+		this.changeCustomer = this.changeCustomer.bind(this);
+	}
+
+
+	componentWillMount() {
+
+	  }
+
+	  componentDidMount(){
+		  this.props.dispatch(fetchCustomer(this.state.id));
+		  this.props.dispatch(fetchReports(this.state.id));
+	  }
+
+  changeCustomer(event) {
+		var cust_id = document.getElementById('customer_id').value;
+
+	  this.setState({id: cust_id});
+	  this.componentDidMount();
+	  this.render();
+	}
 
   render() {
   	const { customer } = this.props;
@@ -28,6 +50,9 @@ export default class Overview extends React.Component {
   	const currentCalories = mappedCalories[mappedCalories.length-1];
 	const profilePictureUrl = customer.profile_picture_url;
   	return <div id="mainContent">
+		<h2>Change customer: {this.state.id}</h2>
+		<input type="text" id="customer_id" class="form-control" placeholder="Customer id"/>
+		<button class="btn btn-default linkButton" onClick={this.changeCustomer}>Change customer!</button>
   		<h1>{customer.first_name} {customer.last_name}</h1>
 		<h3><span class="glyphicon glyphicon-scale"/></h3>
 		<h4>Current weight</h4>
