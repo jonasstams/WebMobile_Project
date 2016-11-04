@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e1064712-0254-4cf6-b40a-15fb4cf04b6e" name="Default" comment="react met id proberen fixen">
+    <list default="true" id="e1064712-0254-4cf6-b40a-15fb4cf04b6e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -575,7 +575,7 @@
       <workItem from="1478096358307" duration="2267000" />
       <workItem from="1478177581291" duration="10227000" />
       <workItem from="1478249134440" duration="4007000" />
-      <workItem from="1478257903960" duration="7810000" />
+      <workItem from="1478257903960" duration="7924000" />
     </task>
     <task id="LOCAL-00001" summary="Css beetje opmaak, effecten terug, padding aangepast, customercontroller aangepast">
       <created>1478257516144</created>
@@ -584,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478257516144</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="react met id proberen fixen">
+      <created>1478265719172</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1478265719172</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -620,7 +627,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47295000" />
+    <option name="totallyTimeSpent" value="47409000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="960" height="1050" extended-state="4" />
