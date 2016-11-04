@@ -119,18 +119,18 @@ class CustomerController extends Controller
     }
 
     /**
-     * @Route("/customer/pdf", name="customer_pdf")
+     * @Route("/customer/pdf/{id}", name="customer_pdf")
      */
-    public function toPDFAction(){
+
+    public function toPDFAction($id){
         // You can send the html as you want
         //$html = '<h1>Plain HTML</h1>';
-
         // but in this case we will render a symfony view !
         // We are in a controller and we can use renderView function which retrieves the html from a view
         // then we send that html to the user.
-        $customers = RestCurl::get('www.jonasstams.be/api/public/customers/1');
+        $customers = RestCurl::get('www.jonasstams.be/api/public/customers/'.$id);
         $customers_JSON = $customers['data'];
-        $reports = RestCurl::get('www.jonasstams.be/api/public/reports/1');
+        $reports = RestCurl::get('www.jonasstams.be/api/public/reports/'.$id);
         $reports_JSON = $reports['data'];
         $html = $this->renderView(
             'AppBundle:Customer:customer_report_pdfLayout.html.twig',
@@ -139,6 +139,7 @@ class CustomerController extends Controller
                 'reports'=>$reports_JSON
             )
         );
+
 
         $this->returnPDFResponseFromHTML($html);
     }
