@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1064712-0254-4cf6-b40a-15fb4cf04b6e" name="Default" comment="Css beetje opmaak, effecten terug, padding aangepast, customercontroller aangepast">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Werkpakket2/bin/symfony_requirements" afterPath="$PROJECT_DIR$/Werkpakket2/bin/symfony_requirements" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Werkpakket2/src/AppBundle/Controller/CustomerController.php" afterPath="$PROJECT_DIR$/Werkpakket2/src/AppBundle/Controller/CustomerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Werkpakket2/src/AppBundle/Resources/views/Customer/customer_report_overview.html.twig" afterPath="$PROJECT_DIR$/Werkpakket2/src/AppBundle/Resources/views/Customer/customer_report_overview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Werkpakket2/var/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/Werkpakket2/var/SymfonyRequirements.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Werkpakket2/web/config.php" afterPath="$PROJECT_DIR$/Werkpakket2/web/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Werkpakket2/web/css/style.css" afterPath="$PROJECT_DIR$/Werkpakket2/web/css/style.css" />
     </list>
     <ignored path="WebMobile_Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -514,8 +507,16 @@
       <workItem from="1478011051113" duration="4758000" />
       <workItem from="1478096358307" duration="2267000" />
       <workItem from="1478177581291" duration="10227000" />
-      <workItem from="1478249134440" duration="3926000" />
+      <workItem from="1478249134440" duration="4007000" />
     </task>
+    <task id="LOCAL-00001" summary="Css beetje opmaak, effecten terug, padding aangepast, customercontroller aangepast">
+      <created>1478257516144</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1478257516144</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -551,11 +552,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39404000" />
+    <option name="totallyTimeSpent" value="39485000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17291667" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
