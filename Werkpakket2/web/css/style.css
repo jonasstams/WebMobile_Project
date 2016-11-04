@@ -150,9 +150,17 @@ body{
 	background-color: #fa716b;
 	cursor: pointer;
 }
-.nice-button.half-button.user{
-	background-color: #9599FB;
+.admin{
+	background-color: #ffee00;
+}
+.current{
 	opacity: 1;
+}
+.coach{
+	background-color: #9599FB;
+}
+.customerOverview{
+	background: #70e99a;
 }
 
 .nice-button.half-button.edit{
@@ -174,10 +182,11 @@ body{
 	height: 60px;
 	padding-top: 5px;
 	margin-top: 50px;
-	margin-left: 40px;
-	margin-right: 40px;
+	/*margin-left: 40px;
+	margin-right: 40px;*/
 	font-size: 35px;
-}
+	border:0;
+	}
 
 #loginModal .error{
 	font-size: 20px;
@@ -217,8 +226,21 @@ body{
 .modal .nice-button{
 	height: 60px;
 	padding-top: 10px;
-	float: right;
-	margin-right: 20px;
+
+}
+.returnbutton{
+	background: #8a6d3b;
+	float:left;
+	margin-left:80px;
+
+}
+.backbutton{
+	float:left;
+	margin-left:80px;
+}
+.loginbutton{
+	background: #70e99a;
+	width:340px;
 }
 #logoutModal .nice-button, #deleteModal .nice-button{
 

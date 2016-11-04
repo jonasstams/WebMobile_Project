@@ -5,6 +5,7 @@
 
 
 {% block body %}
+
     {% block javascripts %}
         {{ parent() }}
         <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -13,7 +14,7 @@
     {% endblock %}
     {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/coach.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/ProfileLayout.css') }}">
     {% endblock %}
     <div>
         {% if response is defined %}
@@ -23,8 +24,23 @@
                 <p id="statusNOK" class="status">Something went wrong! :( Status code: {{ response  }}</p>
             {% endif %}
         {%  endif %}
-    </div>
-    <div class="row"><div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="backbutton">
+                    <a href="{{ path('admin_route')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Admin Home">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                    </a> </div>
+            {% endif %}
+        </div>
+
+        {% if is_granted('ROLE_COACH')and not is_granted('ROLE_ADMIN') %}
+            <div class="backbutton">
+                <a href="{{ path('coach_route')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Coach Home">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                </a> </div>
+        {% endif %}
+        </div>
     <div class="col-md-4"> <input id="search" type="text" placeholder="Search..." class="center-block"/></div>
         {% if is_granted('ROLE_ADMIN') %}
     <div class="col-md-4"><a href="{{ path('new_customer')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Create Customer">

@@ -10,7 +10,7 @@
     {% endblock %}
     {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/coach.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/ProfileLayout.css') }}">
     {% endblock %}
     <div class="container">
         <form action="{{ path('update_habits', {'id':customer.id}) }}" method="POST">

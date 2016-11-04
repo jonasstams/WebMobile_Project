@@ -7,13 +7,12 @@
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/coach.css') }}">
 {% endblock %}
 {% block body %}
     <p>What would you like to do?</p>
     <div id="menu">
         <div id="menuLeftBlock">
-            <div class="nice-button half-button user"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span><p>{{ app.user.username }} </p></div>
+            <div class="nice-button half-button current coach"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span><p>{{ app.user.username }} </p></div>
             <div id="menu-settings">
                 <div id="menu-settingsLeftBlock">
                     <a data-toggle="modal" data-target="#logoutModal"><div class="nice-button half-button logout"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Log out</p></div></a>
