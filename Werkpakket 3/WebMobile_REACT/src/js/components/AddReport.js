@@ -23,12 +23,15 @@ export default class AddReport extends React.Component {
   		var habit2_done = document.getElementById('habit2').checked;
   		var habit3_done = document.getElementById('habit3').checked;
 
-  		this.props.dispatch(postDailyReportForCustomerByID(id,
+  		 this.props.dispatch(postDailyReportForCustomerByID(id,
 													  		weight,
 													  		calories,
 													  		habit1_done,
 													  		habit2_done,
 													  		habit3_done));
+
+
+
   	}
 
 	componentWillMount() {
@@ -43,7 +46,7 @@ export default class AddReport extends React.Component {
 			<h2>Weight</h2>
 			<input type="text" id="weight" class="form-control" placeholder="Current weight..."/>
 			<h2>Calories</h2>
-			<input type="text" id="calories" class="form-control" placeholder="Calories..."/>
+			<input type="text" id="calories" class="form-control" placeholder="Current calories..."/>
 
 
 			<div class="[ form-group ]">

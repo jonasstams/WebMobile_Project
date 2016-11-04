@@ -39,8 +39,14 @@ export function postDailyReportForCustomerByID(id = 0, weight, calories, h1=fals
 		habit3_done: h3,
 	});
 	return function(dispatch) {
-		axios.post('http://www.jonasstams.be/api/public/reports/' + id, json).then(function (response) {
-			    console.log(response);
-			  })
+		axios.post('http://www.jonasstams.be/api/public/reports/' + id, json)
+			.then((response) => {
+				dispatch({type: "POST_REPORT_FULFILLED", payload: true});
+			})
+			.catch((error) => {
+				if(error.response.status = 400){
+					dispatch({type: "POST_REPORT_REJECTED", error: error.response.data})}
+
+		});
 	}
 }
