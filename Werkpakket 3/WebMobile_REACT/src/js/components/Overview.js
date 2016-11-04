@@ -23,23 +23,31 @@ export default class Overview extends React.Component {
 
 
 	componentWillMount() {
-
+		this.props.dispatch(fetchCustomer(this.state.id));
+		this.props.dispatch(fetchReports(this.state.id));
 	  }
 
 	  componentDidMount(){
-		  this.props.dispatch(fetchCustomer(this.state.id));
-		  this.props.dispatch(fetchReports(this.state.id));
+
 	  }
+	setNewvalues(cust_id){
+		this.setState({id: cust_id});
+		this.componentWillMount();
+		this.render();
+	}
 
   changeCustomer(event) {
 		var cust_id = document.getElementById('customer_id').value;
-
-	  this.setState({id: cust_id});
-	  this.componentDidMount();
-	  this.render();
+	  this.setNewvalues(cust_id);
+	}
+	setNewvalues(cust_id){
+		this.setState({id: cust_id});
+		this.componentWillMount();
+		this.render();
 	}
 
-  render() {
+
+	render() {
   	const { customer } = this.props;
   	const { reports } = this.props;
 
