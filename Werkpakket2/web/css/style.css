@@ -340,6 +340,8 @@ body{
 	.content {
 		padding: 58px 0px 0px 0px;
 	}
+
+
 }
 @media screen and (max-width:1280px)	{
 	.content {
@@ -388,6 +390,33 @@ body{
 		margin: 18px 0px 22px 0px;
 	}
 }
+@media screen and (min-width:320px){
+	.passwordform{
+
+		border:1px;
+	}
+	#change_password >div{
+		float:left;
+	}
+	#change_password >div>label{
+		color:Black;
+		float:left;
+
+	}
+	#change_password >div>input{
+		background:white;
+		float:left;
+	}
+	#pw_button{
+		width:295px;
+		margin-left:100px;
+	}
+	.editPwglyph{
+		float:left;
+
+	}
+}
+
 
 /* Responsive design voor index */
 @media screen and (min-width: 1024px)	{
@@ -415,7 +444,32 @@ body{
 		float: right;
 		width: 50%;
 	}
+	.passwordform{
+
+		border:1px;
+	}
+	#change_password >div{
+		float:left;
+	}
+	#change_password >div>label{
+		color:Black;
+		float:left;
+
+	}
+	#change_password >div>input{
+		background:white;
+		float:left;
+	}
+	#pw_button{
+		width:295px;
+		margin-left:100px;
+	}
+	.editPwglyph{
+		float:left;
+
+	}
 }
+
 
 
 /* Effectjes (weggelaten voor de gemakkelijkheid */
