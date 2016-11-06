@@ -37,12 +37,10 @@ class DefaultController extends Controller {
     /**
      * @Route("/logout" , name="logout")
      */
-    public function logoutAction(Request $request)
-    {
+    public function logoutAction(Request $request) {
         $this->get('security.token_storage')->setToken(null);
-    //    $this->get('request')->getSession()->invalidate();
+        //    $this->get('request')->getSession()->invalidate();
         return $this->render('default/index.html.twig');
-
     }
 
     /**
@@ -55,7 +53,7 @@ class DefaultController extends Controller {
         header("Content-Length: 0");
         return new Response(null, 401);
     }
-    
+
     /**
      * @Route("/makeusers")
      */

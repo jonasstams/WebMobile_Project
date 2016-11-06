@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: jonas
@@ -8,21 +9,17 @@
 
 namespace AppBundle\Entity;
 
+class RolesHelper {
 
-class RolesHelper
-{
     private $rolesHierarchy;
-
     private $roles;
 
-    public function __construct($rolesHierarchy)
-    {
+    public function __construct($rolesHierarchy) {
         $this->rolesHierarchy = $rolesHierarchy;
     }
 
-    public function getRoles()
-    {
-        if($this->roles) {
+    public function getRoles() {
+        if ($this->roles) {
             return $this->roles;
         }
 
@@ -33,4 +30,5 @@ class RolesHelper
 
         return $this->roles = array_unique($roles);
     }
+
 }

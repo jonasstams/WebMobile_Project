@@ -3,7 +3,7 @@
 {% block title %}Lifestyle - Admin page{% endblock %}
 
 {% block headertitle %}
-    <h1>Welcome to the Admin page</h1>
+<h1>Welcome to the Admin page</h1>
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
@@ -12,40 +12,40 @@
 
 {% block body %}
 
-        <p>What would you like to do?</p>
-        <div id="menu">
-            <div id="menuLeftBlock">
-                <div class="colored-buttons" >
-                    <a href="#"><div class="nice-button half-button current admin"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span><p>{{ app.user.username|capitalize }} </p></div></a>
-                    <div id="menu-settingsLeftBlock">
-                    <a data-toggle="modal" data-target="#logoutModal"><div class="nice-button half-button logout"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Log out</p></div></a>
-                    </div>
-                    <div id="menu-settingsRightBlock">
-                        <a href={{ path("password_change") }}><div class="nice-button half-button settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><p>Settings</p></div></a>
-                    </div>
-                </div>
+<p>What would you like to do?</p>
+<div id="menu">
+    <div id="menuLeftBlock">
+        <div class="colored-buttons" >
+            <a href="#"><div class="nice-button half-button current admin"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span><p>{{ app.user.username|capitalize }} </p></div></a>
+            <div id="menu-settingsLeftBlock">
+                <a data-toggle="modal" data-target="#logoutModal"><div class="nice-button half-button logout"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Log out</p></div></a>
             </div>
-            <div id="menuRightBlock">
-                <div id="menu-settingsLeftBlock">
-                    <a href={{ path("user_index") }}><div class="nice-button coach"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><p>Manage Coaches</p></div></a>
-                </div>
-                <div id="menu-settingsRightBlock">
-                    <a href={{ path("customer_overview") }}><div class="nice-button customerOverview"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><p>Manage Customers</p></div></a>
-                </div>
+            <div id="menu-settingsRightBlock">
+                <a href={{ path("password_change") }}><div class="nice-button half-button settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><p>Settings</p></div></a>
             </div>
-         </div>
+        </div>
+    </div>
+    <div id="menuRightBlock">
+        <div id="menu-settingsLeftBlock">
+            <a href={{ path("user_index") }}><div class="nice-button coach"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><p>Manage Coaches</p></div></a>
+        </div>
+        <div id="menu-settingsRightBlock">
+            <a href={{ path("customer_overview") }}><div class="nice-button customerOverview"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><p>Manage Customers</p></div></a>
+        </div>
+    </div>
+</div>
 
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <p>Do you really want to log out?</p>
-                            <a data-dismiss="modal"><div class="col-md-5 nice-button"><p>No</p></div></a>
-                            <a href={{ path("logout") }}><div class="col-md-5 nice-button"><p>Yes</p></div></a>
-                        </div>
-                    </div>
-                </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Do you really want to log out?</p>
+                <a data-dismiss="modal"><div class="col-md-5 nice-button"><p>No</p></div></a>
+                <a href={{ path("logout") }}><div class="col-md-5 nice-button"><p>Yes</p></div></a>
             </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 {% block javascripts %}
