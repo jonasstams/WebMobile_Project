@@ -103,6 +103,9 @@ body{
 .copy-right p a:hover{
 	color:#666;
 }
+.backbutton{
+	background:#8a6d3b;
+}
 
 .nice-button{
 	height:300px;
@@ -120,7 +123,85 @@ body{
 	-webkit-animation: fadein 2.5s; /* Safari and Chrome */
 	-o-animation: fadein 2.5s; /* Opera */
 }
+.create-coach-button{
+	height:80px;
+	width:100px;
+	background-color: #9599FB;
+	cursor: pointer;
+	transition:all 0.3s ease;
+	opacity: 0.4;
+	padding-top: 10px;
+	margin-left:250px;
+	color: #FFFFFF;
+	margin-bottom: 10px;
+	font-size: 25px;
+	animation: fadein 2.5s;
+	-moz-animation: fadein 2.5s; /* Firefox */
+	-webkit-animation: fadein 2.5s; /* Safari and Chrome */
+	-o-animation: fadein 2.5s; /* Opera */
+}
 
+.create-usr-button{
+	height:80px;
+	width:100px;
+	background-color: #70e99a;
+	cursor: pointer;
+	transition:all 0.3s ease;
+	opacity: 0.4;
+	padding-top: 10px;
+	margin-left:250px;
+	color: #FFFFFF;
+	margin-bottom: 10px;
+	font-size: 25px;
+	animation: fadein 2.5s;
+	-moz-animation: fadein 2.5s; /* Firefox */
+	-webkit-animation: fadein 2.5s; /* Safari and Chrome */
+	-o-animation: fadein 2.5s; /* Opera */
+}
+
+
+.return-button{
+	height:80px;
+	width:100px;
+	background-color: #fa716b;
+	cursor: pointer;
+	transition:all 0.3s ease;
+	opacity: 0.4;
+	padding-top: 10px;
+	margin-left:150px;
+	margin-right:5px;
+	color: #FFFFFF;
+	margin-bottom: 10px;
+	font-size: 25px;
+	animation: fadein 2.5s;
+	-moz-animation: fadein 2.5s; /* Firefox */
+	-webkit-animation: fadein 2.5s; /* Safari and Chrome */
+	-o-animation: fadein 2.5s; /* Opera */
+}
+.return-button p {
+	padding-top: 0;
+	padding-bottom:5px;
+	font-size: 18px;
+	text-align: center;
+	color: #FFFFFF;
+	margin:0;
+}
+.create-usr-button p {
+	padding-top: 0;
+	padding-bottom:5px;
+	font-size: 18px;
+	text-align: center;
+	color: #FFFFFF;
+	margin:0;
+}
+.create-coach-button p {
+	padding-top: 0;
+	padding-bottom:5px;
+	font-size: 18px;
+	text-align: center;
+	color: #FFFFFF;
+	margin:0;
+}
 
 .nice-button p {
 	padding-top: 75px;
@@ -150,6 +231,10 @@ body{
 	background-color: #fa716b;
 	cursor: pointer;
 }
+.nice-button.half-button.return{
+	background-color: #fa716b;
+	cursor: pointer;
+}
 .admin{
 	background-color: #ffee00;
 }
@@ -170,7 +255,15 @@ body{
 .nice-button.half-button.delete{
 	background-color: #fbd22c;
 }
-
+.create-coach-button:hover{
+	opacity:1;
+}
+.create-usr-button:hover{
+	opacity:1;
+}
+.return-button:hover{
+	opacity:1;
+}
 .nice-button:hover{
 	opacity: 1;
 }
@@ -228,6 +321,7 @@ body{
 	padding-top: 10px;
 
 }
+
 .returnbutton{
 	background: #8a6d3b;
 	float:left;
@@ -242,7 +336,7 @@ body{
 	background: #70e99a;
 	width:340px;
 }
-#logoutModal .nice-button, #deleteModal .nice-button{
+#logoutModal .nice-button, #deleteModal .nice-button {
 
 }
 .modal .nice-button p{
@@ -263,6 +357,9 @@ body{
 	margin:auto;
 	text-align: left;
 	font-size:19px;
+}
+#user-table thead{
+	background:#9599FB;
 }
 #user-table{
 	width:40%;

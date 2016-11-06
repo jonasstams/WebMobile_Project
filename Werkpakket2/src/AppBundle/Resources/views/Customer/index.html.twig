@@ -16,7 +16,7 @@
         {{ parent() }}
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ProfileLayout.css') }}">
     {% endblock %}
-    <div>
+
         {% if response is defined %}
             {% if response == 200 %}
                 <p id="statusOK" class="status">Habits succesfully edited!</p>
@@ -27,26 +27,38 @@
         <div class="row">
         <div class="col-md-4">
             {% if is_granted('ROLE_ADMIN') %}
-                <div class="backbutton">
-                    <a href="{{ path('admin_route')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Admin Home">
-                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
-                    </a> </div>
+                <div class="row">
+                    <div class="col-md-4">
+                                                    <div id="menu-settingsLeftBlock">
+                                <a href="{{ path('admin_route') }}"> <div class="return-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
+                            </div>
+                    </div>
+                </div>
             {% endif %}
 
 
         {% if is_granted('ROLE_COACH')and not is_granted('ROLE_ADMIN') %}
-            <div class="backbutton">
-                <a href="{{ path('coach_route')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Coach Home">
-                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
-                </a> </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="menu-settingsLeftBlock">
+                                <a href="{{ path('coach_route') }}"> <div class="return-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
+                            </div>
+
+                    </div>
+                </div>
         {% endif %}
         </div>
     <div class="col-md-4"> <input id="search" type="text" placeholder="Search..." class="center-block"/></div>
         {% if is_granted('ROLE_ADMIN') %}
-    <div class="col-md-4"><a href="{{ path('new_customer')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Create Customer">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Customer
-        </a> </div>
-        {% endif %}
+                  <div class="row">
+                    <div class="col-md-4">
+                        <div id="menu-settingsLeftBlock">
+                            <a href="{{ path('new_customer') }}" data-toggle="tooltip" title="Create Customer"> <div class="create-usr-button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><p>Add</p></div></a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
 </div>
     </div>
     </br>

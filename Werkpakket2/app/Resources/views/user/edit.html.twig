@@ -6,13 +6,14 @@
     <div class="row">
         <div class="col-md-4">
             {% if is_granted('ROLE_ADMIN') %}
-                <div class="backbutton">
-                    <a href="{{ path('user_index')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Coach List">
-                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
-                    </a> </div>
+                <div>
+                    <div id="menu-settingsLeftBlock">
+                        <a href="{{ path('user_index') }}"> <div class="return-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
+                    </div>
             {% endif %}
+                </div>
         </div>
-    </div>
+        </div>
     <div class="row">
         {{ form_start(edit_form, {'attr': {'id': 'edit_form'}}) }}
         {{ form_widget(edit_form) }}

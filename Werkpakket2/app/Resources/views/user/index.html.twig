@@ -9,18 +9,18 @@
     <div class="row">
     <div class="col-md-4">
         {% if is_granted('ROLE_ADMIN') %}
-            <div class="backbutton">
-                <a href="{{ path('admin_route')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Admin Home">
-                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
-                </a> </div>
+            <div id="menu-settingsLeftBlock">
+                <a href="{{ path('admin_route') }}"> <div class="return-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
+            </div>
         {% endif %}
 </div>
         <div class="col-md-4"></div>
         <div class="col-md-4">
         <ul>
             <li>
-                <a href="{{ path('user_new') }}" class="btn btn-default" data-toggle="tooltip" title="Create New Coach" data-original-title="Show reports">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new coach</a>
+                <div id="menu-settingsLeftBlock">
+                    <a href="{{ path('user_new') }}"> <div class="create-coach-button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><p>Add</p></div></a>
+                </div>
             </li>
         </ul>
     </div>
@@ -41,11 +41,11 @@
                 <td>{{ user.username }}</td>
                 <td>
                 {% if 'ADMIN' in user.rolesString %}
-                    <span class="label label-primary">Admin</span>
+                    <span class="label label-warning">Admin</span>
 
                 {% endif %}
                 {% if 'COACH' in user.rolesString %}
-                    <span class="label label-success">Coach</span>
+                    <span class="label label-primary">Coach</span>
                 {% endif %}
                 </td>
                 <td>
