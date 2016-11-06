@@ -6,8 +6,25 @@
     <h1>Coach list</h1>
 {% endblock %}
 {% block body %}
-
-
+    <div class="row">
+    <div class="col-md-4">
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="backbutton">
+                <a href="{{ path('admin_route')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Admin Home">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                </a> </div>
+        {% endif %}
+</div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <ul>
+            <li>
+                <a href="{{ path('user_new') }}" class="btn btn-default" data-toggle="tooltip" title="Create New Coach" data-original-title="Show reports">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new coach</a>
+            </li>
+        </ul>
+    </div>
+        </div>
     <table id="user-table">
         <thead>
             <tr>
@@ -47,10 +64,6 @@
         </tbody>
 
     </table>
-    <ul>
-        <li>
-            <a href="{{ path('user_new') }}" class="btn btn-default" data-toggle="tooltip" title="" data-original-title="Show reports"> Create new coach</a>
-        </li>
-    </ul>
+
 
 {% endblock %}

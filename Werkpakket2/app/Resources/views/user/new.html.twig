@@ -3,7 +3,16 @@
     <h1>User creation</h1>
 {% endblock %}
 {% block body %}
-
+    <div class="row">
+        <div class="col-md-4">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="backbutton">
+                    <a href="{{ path('user_index')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Coach List">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                    </a> </div>
+            {% endif %}
+        </div>
+    </div>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}

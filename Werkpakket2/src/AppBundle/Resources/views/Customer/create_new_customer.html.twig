@@ -12,6 +12,16 @@
         {{ parent() }}
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ProfileLayout.css') }}">
     {% endblock %}
+    <div class="row">
+        <div class="col-md-4">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="backbutton">
+                    <a href="{{ path('customer_overview')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Admin Home">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                    </a> </div>
+            {% endif %}
+        </div>
+    </div>
     <div class="container">
         <form action="{{ path('create_new_customer') }}" method="POST">
             <p>First Name</p>
