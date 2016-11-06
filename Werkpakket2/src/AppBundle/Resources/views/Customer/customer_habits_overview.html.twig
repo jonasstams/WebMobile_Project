@@ -13,6 +13,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ProfileLayout.css') }}">
     {% endblock %}
     <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                {% if is_granted('ROLE_COACH') %}
+                    <div class="backbutton">
+                        <a href="{{ path('customer_overview')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Customer Overview">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                        </a> </div>
+                {% endif %}
+            </div>
+        </div>
         <form action="{{ path('update_habits', {'id':customer.id}) }}" method="POST">
             {% if is_granted('ROLE_ADMIN') %}
             <p>First Name</p>

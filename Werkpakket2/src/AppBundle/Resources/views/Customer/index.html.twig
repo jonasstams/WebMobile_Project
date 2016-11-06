@@ -24,7 +24,7 @@
                 <p id="statusNOK" class="status">Something went wrong! :( Status code: {{ response  }}</p>
             {% endif %}
         {%  endif %}
-
+        <div class="row">
         <div class="col-md-4">
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="backbutton">
@@ -32,7 +32,7 @@
                         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
                     </a> </div>
             {% endif %}
-        </div>
+
 
         {% if is_granted('ROLE_COACH')and not is_granted('ROLE_ADMIN') %}
             <div class="backbutton">
@@ -47,7 +47,7 @@
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Customer
         </a> </div>
         {% endif %}
-
+</div>
     </div>
     </br>
     </br>

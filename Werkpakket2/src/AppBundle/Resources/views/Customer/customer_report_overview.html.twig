@@ -16,6 +16,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ProfileLayout.css') }}">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     {% endblock %}
+    <div class="row">
+        <div class="col-md-4">
+            {% if is_granted('ROLE_COACH') %}
+                <div class="backbutton">
+                    <a href="{{ path('customer_overview')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Customer Overview">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                    </a> </div>
+            {% endif %}
+        </div>
+    </div>
     <div class="container">
         <div id="reportCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
             <!-- Wrapper for slides -->
