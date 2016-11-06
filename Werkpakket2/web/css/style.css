@@ -390,7 +390,8 @@ body{
 		margin: 18px 0px 22px 0px;
 	}
 }
-@media screen and (min-width:320px){
+/*
+@media screen and (min-width:420px){
 	.passwordform{
 
 		border:1px;
