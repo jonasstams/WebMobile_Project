@@ -64,7 +64,7 @@ class DailyReportController extends Controller
         if($dailyReportAddResult['created']){
             $this->view->sendHttpCreated();
         }else{
-            $this->view->sendHttpBadRequest(array($dailyReportAddResult["error"]));
+            $this->view->sendHttpBadRequest($dailyReportAddResult["error"]);
         }
     }
 
@@ -75,7 +75,7 @@ class DailyReportController extends Controller
        if($dailyReportChangeResult['changed'])
             $this->view->sendHttpAccepted();
         else
-              $this->view->sendHttpBadRequest(array($dailyReportChangeResult['error']));
+              $this->view->sendHttpBadRequest($dailyReportChangeResult['error']);
     }
 
     public function handleCheckIfReportOnDate($customerId)

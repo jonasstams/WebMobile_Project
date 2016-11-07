@@ -70,7 +70,7 @@ class CustomerController extends Controller
         if($customerAddResult['created']){
             $this->view->sendHttpCreated();
         }else{
-            $this->view->sendHttpBadRequest(array($customerAddResult['error']));
+            $this->view->sendHttpBadRequest($customerAddResult['error']);
         }
     }
 
@@ -83,7 +83,7 @@ class CustomerController extends Controller
         if($customerChangeResult['changed']){
             $this->view->sendHttpAccepted();
         }else{
-            $this->view->sendHttpBadRequest(array($customerChangeResult['error']));
+            $this->view->sendHttpBadRequest($customerChangeResult['error']);
         }
     }
 
@@ -94,7 +94,7 @@ class CustomerController extends Controller
             if($customerRemoved)
                 $this->view->sendHttpAccepted();
             else{
-                $this->view->sendHttpBadRequest(array('No customer removed because no customer found with id: ' . $customerId));
+                $this->view->sendHttpBadRequest('No customer removed because no customer found with id: ' . $customerId);
         }
     }
 

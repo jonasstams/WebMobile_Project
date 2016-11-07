@@ -14,10 +14,13 @@ class Customer
 
     private $habit3;
 
+    private $profile_picture_url;
+
 
 
     public function __construct()
     {
+        $this->setProfilePictureUrl('');
     }
 
     public function setId($id)
@@ -105,4 +108,12 @@ class Customer
             }
         });
         return $array;
-    }}
+    }
+    public function getProfilePictureUrl(){
+        return $this->profile_picture;
+    }
+
+    public function setProfilePictureUrl($url){
+        $this->profile_picture = $url;
+    }
+    }

@@ -13,5 +13,10 @@ class HomeView extends View
         header('Location: http://localhost/api/public/home.html');
     }
 
+    public function show404Page()
+    {
+        header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+        header('Location: http://localhost/api/public/404.html');
+    }
 
 }
