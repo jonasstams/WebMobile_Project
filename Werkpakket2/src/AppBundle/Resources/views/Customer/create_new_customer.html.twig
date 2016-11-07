@@ -16,7 +16,7 @@
         <div class="col-md-4">
             {% if is_granted('ROLE_COACH') %}
                 <div id="menu-settingsLeftBlock">
-                   <a href="{{ path('customer_overview') }}"> <div class="return-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
+                   <a href="{{ path('customer_overview') }}"> <div class="return-button" data-toggle="tooltip" title="Previews Page"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
                 </div>
             {% endif %}
         </div>

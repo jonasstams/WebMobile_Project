@@ -10,7 +10,7 @@ Admin - Coach overview
     <div class="col-md-4">
         {% if is_granted('ROLE_ADMIN') %}
         <div id="menu-settingsLeftBlock">
-            <a href="{{ path('admin_route') }}"> <div class="return-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
+            <a href="{{ path('admin_route') }}"> <div class="return-button" data-toggle="tooltip" title="Previews Page"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
         </div>
         {% endif %}
     </div>
@@ -19,7 +19,7 @@ Admin - Coach overview
         <ul>
             <li>
                 <div id="menu-settingsLeftBlock">
-                    <a href="{{ path('user_new') }}"> <div class="create-coach-button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><p>Add</p></div></a>
+                    <a href="{{ path('user_new') }}"> <div class="create-coach-button" data-toggle="tooltip" title="Create Coach"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><p>Add</p></div></a>
                 </div>
             </li>
         </ul>
