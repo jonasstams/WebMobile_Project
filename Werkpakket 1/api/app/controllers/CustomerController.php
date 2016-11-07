@@ -11,6 +11,7 @@ require_once __DIR__.'/../core/Database.php';
 require_once __DIR__.'/../models/CustomerRepository.php';
 require_once __DIR__.'/../models/ICustomerRepository.php';
 require_once __DIR__.'/../views/CustomerView.php';
+require_once __DIR__.'/../models/Customer.php';
 
 class CustomerController extends Controller
 {

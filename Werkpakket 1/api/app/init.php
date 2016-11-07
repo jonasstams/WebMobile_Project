@@ -17,4 +17,3 @@ require_once 'views/CustomerView.php';
 require_once 'views/DailyReportView.php';
 
 
-require_once  '../vendor/altorouter/altorouter/AltoRouter.php';
