@@ -14,6 +14,26 @@ class CustomerRepository implements ICustomerRepository
             $this->connection = $connection;
     }
 
+    public function findAllAsObject()
+    {
+        try {
+            $stmt = $this->connection->prepare('SELECT * FROM customers');
+            $stmt->execute();
+            $customers = [];
+            while($customer = $stmt->fetchObject('Customer'))
+            {
+                $customers[] = $customer;
+            }
+            if (count($customers) > 0) {
+                return $customers;
+            } else {
+                return null;
+                }
+        } catch (PDOException $e) {
+                return null;
+        }
+
+    }
 
     public function findAll()
     {
@@ -74,17 +94,21 @@ class CustomerRepository implements ICustomerRepository
                         $customer->setHabit2($customerPostData->habit2);
                     if(isset($customerPostData->habit3))
                         $customer->setHabit3($customerPostData->habit3);
+                    if(isset($customerPostData->profile_picture))
+                        $customer->setProfilePictureUrl($customerPostData->profile_picture_url);
+
             $stmt = $this->connection->prepare
                 (
-                    "INSERT INTO customers(first_name, last_name, habit1, habit2, habit3)
-                     VALUES(:first_name, :last_name, :habit1,:habit2,:habit3)"
+                    "INSERT INTO customers(first_name, last_name, habit1, habit2, habit3, profile_picture_url)
+                     VALUES(:first_name, :last_name, :habit1,:habit2,:habit3, :profile_picture)"
                 );
             $stmt->execute(array(
                 'first_name' => $customer->getFirstName(),
                 'last_name' => $customer->getLastName(),
                 'habit1' => $customer->getHabit1(),
                 'habit2' => $customer->getHabit2(),
-                'habit3' => $customer->getHabit3()
+                'habit3' => $customer->getHabit3(),
+                'profile_picture' => $customer->getProfilePictureUrl()
             ));
             return array("created" => true);
         } catch (PDOException $e) {

@@ -42,7 +42,7 @@ class DailyReportRepository implements IDailyReportRepository
     public function findDailyReportsByCustomerId($customerId)
     {
         try {
-            $stmt = $this->connection->prepare('SELECT * FROM daily_report WHERE customer_id=?');
+            $stmt = $this->connection->prepare('SELECT * FROM daily_report WHERE customer_id=? ORDER BY created_at DESC ');
             $stmt->bindParam(1, $customerId, \PDO::PARAM_INT);
             $stmt->execute();
             $dailyReports = [];
@@ -129,7 +129,7 @@ class DailyReportRepository implements IDailyReportRepository
              return array("created" => false, "error" => $e->getMessage());
         }
              }else{
-            return array("created" => false,"error" => 'Only 1 daily reports per day! id:'. $customerId . ' date:' .$date);
+            return array("created" => false,"error" => 'Only 1 daily reports per day!');
         }
         
         }else{

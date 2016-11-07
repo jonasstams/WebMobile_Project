@@ -13,6 +13,33 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('html:contains("Welcome to Lifestyle")')->count()
+        );
+    }
+
+    public function testLogin()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/login');
+
+        $form = $crawler->selectButton('submit')->form(array(
+            '_username' => 'admin1',
+            '_password' => 'a1',
+        ));
+        var_dump($form);
+
+// set some values
+
+
+// submit the form
+        $crawler = $client->submit($form);
+
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('html:contains("Admin")')->count()
+        );
     }
 }

@@ -54,13 +54,9 @@ class View
         $this->sendResponse(304);
     }
 
-     public function sendHttpBadRequest($errors = []){
-        $this->sendResponse(400);
-        foreach($errors as $error){
-            $data['errors'][] = $error;
-        }
-        
-        $this->show($data);
+     public function sendHttpBadRequest($error = '{}'){
+        $this->sendResponse(400);        
+        $this->show($error);
     }
      public function sendHttpNotFound(){
         $this->sendResponse(404);

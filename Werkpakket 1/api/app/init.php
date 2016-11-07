@@ -1,5 +1,4 @@
 <?php
-
 require_once 'core/Constants.php';
 require_once 'core/Database.php';
 require_once 'core/Controller.php';
@@ -18,5 +17,4 @@ require_once 'views/CustomerView.php';
 require_once 'views/DailyReportView.php';
 
 
-require_once  __DIR__.'/../vendor/altorouter/altorouter/AltoRouter.php';
-require_once __DIR__.'/../vendor/autoload.php';
+require_once  '../vendor/altorouter/altorouter/AltoRouter.php';
