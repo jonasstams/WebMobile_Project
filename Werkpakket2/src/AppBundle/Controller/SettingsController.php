@@ -44,7 +44,7 @@ class SettingsController extends Controller
                  'form' => $form->createView(),
              )); }*/
         }
-        return $this->render('AppBundle:Settings:change_Password.html.twig', array(
+        return $this->render('AppBundle:Settings:change_password.html.twig', array(
             'form' => $form->createView(),
         ));
 

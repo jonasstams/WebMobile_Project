@@ -55,26 +55,12 @@
             </div>
         </div>
             {{ form_end(delete_form) }}
-        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <p>User edited!</p>
-                        <a data-dismiss="modal"><div class="col-md-5 nice-button"><p>Ok</p></div></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 </div>
 
 {% endblock %}
 {% block javascripts %}
-<script>
-    $("#edit_form").submit(function(e) {
-        e.preventDefault();
-        $("#messageModal").modal("show");
-    });
-</script>
+
 {% endblock %}
