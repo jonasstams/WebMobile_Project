@@ -83,6 +83,8 @@ class UserController extends Controller {
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $user->setRolesString($request->get('user[rolesString]'));
             $em->persist($user);
             $em->flush();
 

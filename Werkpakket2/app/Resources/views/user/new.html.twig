@@ -1,26 +1,31 @@
 {% extends 'base.html.twig' %}
 {%  block headertitle %}
-<h1>User creation</h1>
+    <h1>User creation</h1>
 {% endblock %}
 {% block body %}
-<div class="row">
-    <div class="col-md-4">
-        {% if is_granted('ROLE_ADMIN') %}
-            <div class="backbutton">
-                <a href="{{ path('user_index')}}" type="button" class="btn btn-default" data-toggle="tooltip" title="Coach List">
-                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
-                </a> 
-            </div>
-        {% endif %}
+    <div class="row">
+        <div class="col-md-4">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="menu-settingsLeftBlock">
+                            <a href="{{ path('user_index') }}"> <div class="return-button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><p>Back</p></div></a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
     </div>
-</div>
+
     {{ form_start(form) }}
         {{ form_widget(form) }}
-            <input type="submit" value="Create" />
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <button type="submit" id="pw_button" class="nice-button half-button form-button edit col-md-3">
+        <span class="glyphicon glyphicon-floppy-disk editPwglyph" aria-hidden="true"></span>
+        <p>Save Changes</p>
+    </button>
+    </div>
+    <div class="col-md-4"></div>
     {{ form_end(form) }}
-<ul>
-    <li>
-        <a href="{{ path('user_index') }}">Back to the list</a>
-    </li>
-</ul>
-{% endblock %}
+    {% endblock %}

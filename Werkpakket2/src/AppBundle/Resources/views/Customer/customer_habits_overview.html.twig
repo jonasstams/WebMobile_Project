@@ -41,7 +41,14 @@
             <input class="form-control" type="text" name="habit2" value="{{ customer.habit2 }}"/>
             <p>Habit 3</p>
             <input class="form-control" type="text" name="habit3" value="{{ customer.habit3 }}"/>
-            <input type="submit" id="habitsSubmitButton" class="btn btn-default btn-lg" value="Edit Customer"/>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+                <button type="submit"  class="nice-button half-button form-button addCustomer">
+                    <span class="glyphicon glyphicon-edit editPwglyph" aria-hidden="true"></span>
+                    <p>Edit Customer</p>
+                </button>
+            </div>
+            <div class="col-md-4"></div>
         </form>
     </div>
 {% endblock %}

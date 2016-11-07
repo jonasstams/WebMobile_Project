@@ -158,7 +158,23 @@ body{
 	-webkit-animation: fadein 2.5s; /* Safari and Chrome */
 	-o-animation: fadein 2.5s; /* Opera */
 }
-
+.pdf-button{
+	height:80px;
+	width:100px;
+	background-color: #718C00;
+	cursor: pointer;
+	transition:all 0.3s ease;
+	opacity: 0.4;
+	padding-top: 10px;
+	margin-right:150px;
+	color: #FFFFFF;
+	margin-bottom: 10px;
+	font-size: 25px;
+	animation: fadein 2.5s;
+	-moz-animation: fadein 2.5s; /* Firefox */
+	-webkit-animation: fadein 2.5s; /* Safari and Chrome */
+	-o-animation: fadein 2.5s; /* Opera */
+}
 
 .return-button{
 	height:80px;
@@ -187,6 +203,14 @@ body{
 	margin:0;
 }
 .create-usr-button p {
+	padding-top: 0;
+	padding-bottom:5px;
+	font-size: 18px;
+	text-align: center;
+	color: #FFFFFF;
+	margin:0;
+}
+.pdf-button p{
 	padding-top: 0;
 	padding-bottom:5px;
 	font-size: 18px;
@@ -251,9 +275,19 @@ body{
 .nice-button.half-button.edit{
 	margin-top: 20px;
 	background-color: #4d5cfb;
+
+}
+.nice-button.half-button.addCustomer{
+	margin-top: 20px;
+	background-color: #70e99a;
+	margin-left: 120px;
+	width: 295px;
 }
 .nice-button.half-button.delete{
 	background-color: #fbd22c;
+}
+.pdf-button:hover{
+	opacity:1;
 }
 .create-coach-button:hover{
 	opacity:1;
@@ -369,6 +403,10 @@ body{
 	padding-bottom: 10px;
 	font-weight: bold;
 }
+#table_paginate, #table_info{
+	text-align: center;
+}
+
 
 #user-table td{
 	padding: 8px;
