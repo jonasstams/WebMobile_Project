@@ -39,13 +39,17 @@ class SettingsController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('password_change', array('id' => $user->getId()));
+            return $this->render('AppBundle:Settings:change_password.html.twig', array(
+                'form' => $form->createView(),
+                'message' => 'Password Changed',
+            ));
             /* return $this->render('AppBundle:Settings:change_Password.html.twig', array(
                  'form' => $form->createView(),
              )); }*/
         }
         return $this->render('AppBundle:Settings:change_password.html.twig', array(
             'form' => $form->createView(),
+            'message' => '',
         ));
 
     }

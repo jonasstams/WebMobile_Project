@@ -13,5 +13,4 @@ class UserRepository extends EntityRepository {
                         )->setParameter('role', '%ROLE_COACH%')
                         ->getResult();
     }
-
 }

@@ -1,4 +1,3 @@
-   </div>
     <div class="row">
         <div class="col-md-4">
             <table id="table" class="table">
@@ -8,8 +7,8 @@
                     <td>{{ customer.first_name }}</td>
                 </tr>
                 <tr>
-                    <td>First Name</td>
-                    <td>{{ customer.first_name }}</td>
+                    <td>Last Name</td>
+                    <td>{{ customer.last_name }}</td>
                 </tr>
             </thead>
             </table>
@@ -21,11 +20,11 @@
 
     <table id="table" class="table">
         <thead>
-        <tr>
+        <tr style="font-weight:bold;" >
             <th>Date</th>
-            <th>{{ customer.habit1 }}</th>
-            <th>{{ customer.habit2 }}</th>
-            <th>{{ customer.habit3 }}</th>
+            <th>{{ customer.habit1 | capitalize }}</th>
+            <th>{{ customer.habit2 | capitalize }}</th>
+            <th>{{ customer.habit3 | capitalize }}</th>
             <th>Weight</th>
             <th>Calories</th>
 
@@ -35,10 +34,25 @@
         <tbody>
         {% for report in reports %}
             <tr>
-                <td>{{ report.created_at }}</td>
-                <td>{{ report.habit1_done }}</td>
-                <td>{{ report.habit2_done }}</td>
-                <td>{{ report.habit3_done }}</td>
+                <td>{{ report.created_at | date("d/m/Y")}}</td>
+                {% if report.habit1_done==1 %}
+                <td style="color:green;"> V</td>
+                {% else %}
+                    <td style="color:red;"> X</td>
+                {% endif %}
+
+                {% if report.habit2_done==1 %}
+                    <td style="color:green;"> V</td>
+                {% else %}
+                    <td style="color:red;"> X</td>
+                {% endif %}
+
+                {% if report.habit3_done==1 %}
+                     <td style="color:green;"> V</td>
+                {% else %}
+                      <td style="color:red;"> X</td>
+                {% endif %}
+
                 <td>{{ report.weight }}</td>
                 <td>{{ report.calories }}</td>
             </tr>
